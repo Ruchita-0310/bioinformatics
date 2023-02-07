@@ -1,0 +1,19 @@
+ssh -i .ssh/ccc_cloud_ghost -o UserKnownHostsFile=/dev/null arch@206.12.90.119
+
+d&dYl!0n
+
+source /bio/bin/python-env/bin/activate
+
+cd /bio/bin
+
+cd python-env
+
+git clone https://github.com/kinestetika/ComparativeGenomics.git
+
+cd ComparativeGenomics/
+python -m build
+
+pip install --upgrade dist/comparative_genomics-0.1.tar.gz
+
+orthologues
+mkdir /bio/data/Ruchita/phormidium/output # output directory for orthologs 
