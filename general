@@ -1,0 +1,36 @@
+ssh -i .ssh/ccc_cloud_ghost -o UserKnownHostsFile=/dev/null arch@206.12.90.119
+d&dYl!0n
+
+source /bio/bin/profile # activates programs not in python env
+source /bio/bin/python-env/bin/activate # activate programs in python env
+
+sudo mkdir /bio/data/Ruchita # making directory
+sudo chown arch Ruchita # changing directory
+
+scp -i .ssh/ccc_cloud_ghost -o UserKnownHostsFile=/dev/null ~/Downloads/file_name.faa arch@206.12.90.119:/bio/data/Ruchita # mac file transfer
+
+cat file_name > new_file_name # concatanating flies
+
+makeblastdb -in new_file_name -dbtype prot # making blast database for protein sequence
+
+blastp -db new_file_name -query new_file_name -out blast_file_name.out -outfmt 6 # blast experiment with options
+
+# MCL blast
+cut -f 1,2,11 seq.cblast > seq.abc
+mcxload -abc seq.abc --stream-mirror --stream-neg-log10 -stream-tf 'ceil(200)' -o seq.mci -write-tab seq.tabmcl seq.mci -I 1.4
+mcl seq.mci -I 2
+mcl seq.mci -I 4
+mcl seq.mci -I 6
+mcxdump -icl out.seq.mci.I14 -o dump.seq.mci.I14 -tabr seq.dict
+mcxdump -icl out.seq.mci.I20 -o dump.seq.mci.I20 -tabr seq.dict
+mcxdump -icl out.seq.mci.I40 -o dump.seq.mci.I40 -tabr seq.dict
+mcxdump -icl out.seq.mci.I60 -o dump.seq.mci.I60 -tabr seq.dict
+
+# usearch clustering
+/bio/bin/usearch -cluster_fasta new_file_name -id 0.9 centeroids usearch_file_name.faa
+
+# prodigal
+prodigal -i flie.fna -o new_file.faa
+
+# unzip
+unzip file_name.zip
