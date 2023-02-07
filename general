@@ -9,7 +9,7 @@ sudo chown arch Ruchita # changing directory
 
 scp -i .ssh/ccc_cloud_ghost -o UserKnownHostsFile=/dev/null ~/Downloads/file_name.faa arch@206.12.90.119:/bio/data/Ruchita # mac file transfer
 
-cat file_name > new_file_name # concatanating flies
+cat file_name.1 file_name.2 file_name.3 > new_file_name #concatanating flies
 
 makeblastdb -in new_file_name -dbtype prot # making blast database for protein sequence
 
@@ -34,3 +34,11 @@ prodigal -i flie.fna -o new_file.faa
 
 # unzip
 unzip file_name.zip
+
+# remove a file
+rm file_name
+
+ls # list
+ls -lrt # list with ownership - read/write/view...
+
+mv ./current_path/file1 ./destination_path/file1 # move and/or rename
