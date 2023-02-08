@@ -1,11 +1,8 @@
-ssh -i .ssh/ccc_cloud_ghost -o UserKnownHostsFile=/dev/null arch@206.12.90.119
-d&dYl!0n
-
 source /bio/bin/profile #activates programs not in python env
-source /bio/bin/python-env/bin/activate # activate programs in python env
+source /bio/bin/python-env/bin/activate #activate programs in python env
 
 sudo mkdir /bio/data/Ruchita #making directory
-sudo chown arch Ruchita # changing directory
+sudo chown arch Ruchita #changing directory
 
 scp -i .ssh/ccc_cloud_ghost -o UserKnownHostsFile=/dev/null ~/Downloads/file_name.faa arch@206.12.90.119:/bio/data/Ruchita #macOS file transfer
 
@@ -30,7 +27,8 @@ mcxdump -icl out.seq.mci.I60 -o dump.seq.mci.I60 -tabr seq.dict
 /bio/bin/usearch -cluster_fasta new_file_name -id 0.9 centeroids usearch_file_name.faa
 
 #prodigal
-prodigal -i flie.fna -o new_file.faa
+prodigal -i file.fna -o new_file.faa
+prodigal - i file.fna -a protein.faa -o genes.gbk
 
 #unzip
 unzip file_name.zip
