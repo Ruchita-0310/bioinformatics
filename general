@@ -36,6 +36,10 @@ unzip file_name.zip
 #remove a file
 rm file_name
 
+#remove directory
+rm -d dir_name #empty directory
+rm -r dir_name #non-empty dirctory and its content
+
 #list
 ls
 ls -lrt #list with ownership - read/write/view...
