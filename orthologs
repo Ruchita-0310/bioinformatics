@@ -15,3 +15,10 @@ mkdir /bio/data/Ruchita/phormidium/output
 
 #orthologs command line (remove all the non .faa files)
 orthologues --input_dir /bio/data/Ruchita/phormidium --output_dir /bio/data/Ruchita/phormidium/output 
+
+#tree of mags
+tree_of_mags –dir input directory
+
+#FastTree
+FastTree inputdir/file.name > fasttree_file
+
