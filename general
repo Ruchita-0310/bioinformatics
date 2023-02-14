@@ -4,7 +4,8 @@ source /bio/bin/python-env/bin/activate #activate programs in python env
 sudo mkdir /bio/data/Ruchita #making directory
 sudo chown arch Ruchita #changing directory
 
-scp -i .ssh/ccc_cloud_ghost -o UserKnownHostsFile=/dev/null ~/Downloads/file_name.faa arch@206.12.90.119:/bio/data/Ruchita #macOS file transfer
+#macOS file transfer
+scp -i .ssh/ccc_cloud_ghost -o UserKnownHostsFile=/dev/null ~/Downloads/file_name.faa arch@206.12.90.119:/bio/data/Ruchita 
 
 cat file_name.1 file_name.2 file_name.3 > new_file_name #concatanating flies
 
@@ -46,3 +47,7 @@ ls -lrt #list with ownership - read/write/view...
 
 #move and/or rename
 mv ./current_path/file1 ./destination_path/file1
+
+#move from one directory to another
+cd .. (moves to previous directory)
+cd ../.. (moves to 2 previous directory)
