@@ -22,3 +22,18 @@ tree_of_mags –dir input directory
 #FastTree
 FastTree inputdir/file.name > fasttree_file
 
+#installing checkM2
+pip install checkm2
+
+#downloading database for checkm2
+checkm2 database –download
+
+#command
+checkm2 predict -t 30 -x fna --input ./cyano-fna --output-directory ./checkm2-output2/ (make an output directory)
+
+#activate the path
+source /bio/bin/checkm2/bin/activate
+export LD_LIBRARY_PATH=/bio/bin/lib:/bio/bin/python38/pkg/python38/usr/lib  (command to remove error)
+
+#metaerg 
+/bio/bin/python-env/bin/metaerg --contig_file /bio/data/Ruchita/cyano-fna --database_dir /bio/databases/metaerg 
