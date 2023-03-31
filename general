@@ -51,3 +51,6 @@ mv ./current_path/file1 ./destination_path/file1
 #move from one directory to another
 cd .. (moves to previous directory)
 cd ../.. (moves to 2 previous directory)
+
+# Word count
+ls -1 *.ale | wc -l # for .ale file (could be any file)
