@@ -82,5 +82,6 @@ nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; 
 
 # ALE_undated | run it in parallel or loop
 parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale
+nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
 -	You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
--	nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators=‘|'” ::: *.ale &
+
