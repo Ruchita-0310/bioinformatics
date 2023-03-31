@@ -1,15 +1,14 @@
+#Activate python and other pathways
 source /bio/bin/python-env/bin/activate
-
 source /bio/bin/profile
 
+#Cloning Marc's page
 git clone https://github.com/kinestetika/ComparativeGenomics.git
-
 cd ComparativeGenomics/
-
 python -m build
-
 pip install --upgrade dist/comparative_genomics-0.1.tar.gz
 
+#Orthologous
 #output directory for orthologs 
 mkdir /bio/data/Ruchita/phormidium/output 
 
@@ -21,19 +20,6 @@ tree_of_mags –dir input directory
 
 #FastTree
 FastTree inputdir/file.name > fasttree_file
-
-#installing checkM2
-pip install checkm2
-
-#downloading database for checkm2
-checkm2 database –download
-
-#command
-checkm2 predict -t 30 -x fna --input ./cyano-fna --output-directory ./checkm2-output2/ (make an output directory)
-
-#activate the path
-source /bio/bin/checkm2/bin/activate
-export LD_LIBRARY_PATH=/bio/bin/lib:/bio/bin/python38/pkg/python38/usr/lib  (command to remove error)
 
 #metaerg 
 /bio/bin/python-env/bin/metaerg --contig_file /bio/data/Ruchita/cyano-fna --database_dir /bio/databases/metaerg 
@@ -84,4 +70,3 @@ nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; 
 parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
 -	You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
-
