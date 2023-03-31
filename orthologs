@@ -80,3 +80,5 @@ for file in /bio/data/Ruchita/faa/orthologous/*.faa; do nohup clustalo -i "$file
 # ALE observe | run it in loop
 nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; done' &
 
+# ALE_undated | run it in parallel or loop
+parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale
