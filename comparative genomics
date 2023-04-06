@@ -1,30 +1,30 @@
-#Activate python and other pathways
+# Activate python and other pathways
 source /bio/bin/python-env/bin/activate
 source /bio/bin/profile
 
-#Cloning Marc's page
+# Cloning Marc's page
 git clone https://github.com/kinestetika/ComparativeGenomics.git
 cd ComparativeGenomics/
 python -m build
 pip install --upgrade dist/comparative_genomics-0.1.tar.gz
 
-#Orthologous
-#output directory for orthologs 
+# Orthologous
+# output directory for orthologs 
 mkdir /bio/data/Ruchita/phormidium/output 
 
-#orthologs command line (remove all the non .faa files)
+# orthologs command line (remove all the non .faa files)
 orthologues --input_dir /bio/data/Ruchita/phormidium --output_dir /bio/data/Ruchita/phormidium/output 
 
-#tree of mags
+# tree of mags
 tree_of_mags –dir input directory
 
-#FastTree
+# FastTree
 FastTree inputdir/file.name > fasttree_file
 
-#metaerg 
+# metaerg 
 /bio/bin/python-env/bin/metaerg --contig_file /bio/data/Ruchita/cyano-fna --database_dir /bio/databases/metaerg 
 
-#Installing CheckM2
+# Installing CheckM2
 1.	Install python 3.8 (https://aur.archlinux.org/packages/python38):
 cd /bio/bin
 git clone https://aur.archlinux.org/python38.git
