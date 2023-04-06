@@ -52,12 +52,12 @@ checkm2 database –download
 8.	Checkm2 command:
 checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory output_directory_name
 
-#iqtree - species tree
+# iqtree - species tree
 nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment
 # IQ-TREE supports a wide range of evolutionary models
 All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites.
 
-# Iqtree2 – gene tree | run it in loop
+# iqtree2 – gene tree | run it in loop
 nohup sh -c 'for file in /bio/data/Ruchita/faa/orthologous/msa_clustalo/*aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
 
 # Clustalo (MSA)multiple sequence alignment | run it in loop 
@@ -70,3 +70,15 @@ nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; 
 parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
 -	You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
+
+# Likelihood table
+# Move all the .ale.uml_rec to reroot1, reroot2 and reroot3 directories respectively
+rename reroot_newick2and3 reroot_newick *
+# copy the code https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file.py
+nano write_consel_file.py 
+python write_consel_file.py reroot1 reroot2 reroot3 > likelihoods_table 
+makermt likelihoods_table.mt
+consel likelihoods_table
+/bio/bin/consel/bin/catpv likelihoods_table > au_test_out
+# copy DTL_ratio_analysis_ML_diff.py from https://github.com/ak-andromeda/ALE_methods/blob/main/DTL_ratio_analysis_ML_diff.py
+nano DTL_ratio_analysis_ML_diff.py
