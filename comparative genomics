@@ -31,31 +31,31 @@ git clone https://aur.archlinux.org/python38.git
 cd python38
 makepkg
 
-2.	Installing virtual env:
+2. Installing virtual env:
 pip install virtualenv
 
-3.	Installing checkm2 in the virtualenv: 
+3. Installing checkm2 in the virtualenv: 
 virtualenv --python=/bio/bin/python38/pkg/python38/usr/bin/python3.8 checkm2
 
-4.	Update library path:
+4. Update library path:
 export LD_LIBRARY_PATH=/bio/bin/lib:/bio/bin/python38/pkg/python38/usr/lib
 
-5.	Activating checkm2 pathway:
+5. Activating checkm2 pathway:
 source /bio/bin/checkm2/bin/activate
 
-6.	installing checkm2:
+6. installing checkm2:
 pip install checkm2
 
-7.	Download checkm2 database:
+7. Download checkm2 database:
 checkm2 database –download
 
-8.	Checkm2 command:
+8. Checkm2 command:
 checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory output_directory_name
 
 # iqtree - species tree
 nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment
 # IQ-TREE supports a wide range of evolutionary models
-All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites.
+# All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites.
 
 # iqtree2 – gene tree | run it in loop
 nohup sh -c 'for file in /bio/data/Ruchita/faa/orthologous/msa_clustalo/*aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
