@@ -1,8 +1,11 @@
-# run zipped file on Metaamp --> results will be multiple folder
-# open "otu_and_taxonomy"
-# run blastn on "MiSeqall.otu.fasta" 
+# run zipped file on Metaamp 
+- results will be multiple folder
+- open "otu_and_taxonomy"
+- run blastn on "MiSeqall.otu.fasta" 
+```
 blastn -db /bio/databases/metaerg/db_rna.fna -query MiSeqall.otu.fasta -max_target_seqs 1 -outfmt 6 
-results interpretation:
+```
+- results interpretation:
 *	query_id: the identifier of the query sequence
 *	subject_id: the identifier of the matching subject sequence
 For example: `p~22609~1527~lcl|NZ_CP054306.1_rrna_28~~1489~27 is the subject ID`
@@ -23,3 +26,4 @@ For example: `p~22609~1527~lcl|NZ_CP054306.1_rrna_28~~1489~27 is the subject ID`
 *	s_end: the ending position of the alignment in the subject sequence
 *	evalue: the E-value of the match, representing the expected number of matches by chance
 *	bit_score: the bit score of the match, representing the strength of the match
+*	
