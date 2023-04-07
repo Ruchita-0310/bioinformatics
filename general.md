@@ -40,7 +40,7 @@ mcxdump -icl out.seq.mci.I60 -o dump.seq.mci.I60 -tabr seq.dict
 /bio/bin/usearch -cluster_fasta new_file_name -id 0.9 centeroids usearch_file_name.faa
 ```
 
-# prodigal 
+# Prodigal 
 - Prodigal is a bioinformatics tool used for gene prediction or gene finding in microbial genomes. It is a fast and efficient gene prediction program that is widely used in genome annotation projects. Prodigal uses a combination of hidden Markov models (HMMs) and a dynamic programming algorithm to identify open reading frames (ORFs) in genomic sequences.
 - `-i` input_file
 - `-o` output_file
@@ -50,35 +50,35 @@ prodigal -i file.fna -o new_file.faa
 prodigal - i file.fna -a protein.faa -o genes.gbk
 ```
 
-# unzip
+# Unzip
 ```
 unzip file_name.zip
 ```
 
-# remove a file
+# Remove 
 ```
-rm file_name
+rm file_name # will remove a file
 ```
 
-# remove directory
+## Remove directory
 ```
 rm -d dir_name #empty directory
 rm -r dir_name #non-empty dirctory and its content
 ```
 
-# list
+# List
 ```
 ls # list all the files in the current directory
 ls -lrt # list with ownership - read/write/view...
 ls -al # hidden files
 ```
 
-# move and/or rename
+# Move and/or rename
 ```
 mv ./current_path/file1 ./destination_path/file1
 ```
 
-# move from one directory to another
+# Move from one directory to another
 ```
 cd .. # moves to previous directory
 cd ../.. # moves to 2 previous directory
