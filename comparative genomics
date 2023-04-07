@@ -84,3 +84,73 @@ consel likelihoods_table
 nano DTL_ratio_analysis_ML_diff.py
 
 # Robustness check
+# make: roots_to_test.txt 
+nano roots_to_test.txt
+```
+reroot1
+reroot2
+reroot3
+```
+
+# make: species_list_demo.txt
+nano species_list_demo.txt
+```
+cyanoSBC 
+gBBD               
+GeitlerinemaPCC_9228 
+gFC2
+MicrocoleusPCC_7113 
+pha
+pSHIP  
+cyanoSID2
+placuna 
+pwillei
+Sodalinemagerasimenkoae
+Baaleninemasimplex     
+GeitlerinemaP-1104
+pBIN05 
+pOSCR
+pyuhuli
+```
+
+mkdir reroot
+cp -r reroot1 reroot
+cp -r reroot2 reroot
+cp -r reroot3 reroot
+
+python DTL_ratio_analysis_ML_diff.py reroot LS
+Results were stored in `LS_ratio_results` directory
+zip ls.zip LS_ratio_results/*
+
+
+|_ reroot1
+|_ reroot2
+|_ reroot3
+
+species_list_demo.txt
+cyanoSBC 
+gBBD               
+GeitlerinemaPCC_9228 
+gFC2
+MicrocoleusPCC_7113 
+pha
+pSHIP  
+cyanoSID2
+placuna 
+pwillei
+Sodalinemagerasimenkoae
+Baaleninemasimplex     
+GeitlerinemaP-1104
+pBIN05 
+pOSCR
+pyuhuli
+
+mkdir reroot
+cp -r reroot1 reroot
+cp -r reroot2 reroot
+cp -r reroot3 reroot
+
+python DTL_ratio_analysis_ML_diff.py reroot LS
+Results were stored in `LS_ratio_results` directory
+zip ls.zip LS_ratio_results/*
+
