@@ -1,4 +1,4 @@
-# ARC
+# Cloud server
 - making directory
 ```
 sudo mkdir /bio/data/Ruchita
