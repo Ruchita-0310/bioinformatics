@@ -5,7 +5,8 @@
 4. Upload it on cloud server
 
 # blastn 
-- run blastn on "MiSeqall.otu.fasta"
+- Run blastn on "MiSeqall.otu.fasta"
+- On cloud blast database is in this pathway /bio/databases/metaerg/db_rna.fna
 ```
 blastn -db /bio/databases/metaerg/db_rna.fna -query MiSeqall.otu.fasta -max_target_seqs 1 -outfmt 6 
 ```
