@@ -1,7 +1,11 @@
-# run zipped file on Metaamp 
-- results will be multiple folder
-- open "otu_and_taxonomy"
-- run blastn on "MiSeqall.otu.fasta" 
+# Metaamp
+1. Run fastq.gz files under OTU and/or ASV
+2. Results will be multiple folder
+3. Open "otu_and_taxonomy"
+4. Upload it on cloud server
+
+# blastn 
+- run blastn on "MiSeqall.otu.fasta"
 ```
 blastn -db /bio/databases/metaerg/db_rna.fna -query MiSeqall.otu.fasta -max_target_seqs 1 -outfmt 6 
 ```
