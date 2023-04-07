@@ -12,17 +12,16 @@ pip install --upgrade dist/comparative_genomics-0.1.tar.gz
 ```
 
 # Orthologous
-output directory for orthologs 
+- output directory for orthologs 
 ```
 mkdir /bio/data/Ruchita/phormidium/output 
 ```
-
-orthologs command line (remove all the non .faa files)
+- orthologs command line (remove all the non .faa files)
 ```
 orthologues --input_dir /bio/data/Ruchita/phormidium --output_dir /bio/data/Ruchita/phormidium/output 
 ```
 
-# tree of mags
+# tree_of_mags
 ```
 tree_of_mags –dir input directory
 ```
@@ -32,7 +31,7 @@ tree_of_mags –dir input directory
 FastTree inputdir/file.name > fasttree_file
 ```
 
-# metaerg 
+# Metaerg 
 ```
 /bio/bin/python-env/bin/metaerg --contig_file /bio/data/Ruchita/cyano-fna --database_dir /bio/databases/metaerg 
 ```
@@ -81,7 +80,7 @@ checkm2 database –download
 checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory output_directory_name
 ```
 
-# iqtree - species tree
+# iqtree2 - species tree
 ```
 nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment
 ```
@@ -111,12 +110,12 @@ nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" :::
 - You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
 
 # Likelihood table
-- Move all the .ale.uml_rec to reroot1, reroot2 and reroot3 directories respectively
+1. Move all the .ale.uml_rec to reroot1, reroot2 and reroot3 directories respectively
+2. rename all reroot_newick2.uml_rec and reroot_newick3.uml_rec to reroot_newick
+3. copy [write_consel_file.py3](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py) 
+
 ```
-rename reroot_newick2and3 reroot_newick *
-```
-[copy the code](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file.py)
-```
+rename reroot_newick2 reroot_newick * 
 nano write_consel_file.py 
 python write_consel_file.py reroot1 reroot2 reroot3 > likelihoods_table 
 makermt likelihoods_table.mt
@@ -125,7 +124,7 @@ consel likelihoods_table
 ```
 
 # Robustness check
-- copy [DTL_ratio_analysis_ML_diff.py](https://github.com/ak-andromeda/ALE_methods/blob/main/DTL_ratio_analysis_ML_diff.py)
+- copy [DTL_ratio_analysis_ML_diff.py](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py)
 - make: roots_to_test.txt 
 ```
 nano DTL_ratio_analysis_ML_diff.py
