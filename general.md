@@ -100,11 +100,13 @@ wget -i url_list.txt # Download multiple files from a URL list
 ```
 blastp -db new_file_name -query new_file_name -out blast_file_name.out -outfmt 6 
 ```
-
+## Making blast database for protein sequences
+```
+makeblastdb -in new_file_name -dbtype prot
+```
 ## Merging files/concatanating flies
 ```
 cat file_name.1 file_name.2 file_name.3 > new_file_name 
-makeblastdb -in new_file_name -dbtype prot # making blast database for protein sequence
 ```
 
 ## MCL blast
