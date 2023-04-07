@@ -8,7 +8,7 @@ blastn -db /bio/databases/metaerg/db_rna.fna -query MiSeqall.otu.fasta -max_targ
 - results interpretation (it will be in a table format)
 1. query_id: the identifier of the query sequence
 2. subject_id: the identifier of the matching subject sequence
-For example: `p~22609~1527~lcl|NZ_CP054306.1_rrna_28~~1489~27 is the subject ID`
+- For example: `p~22609~1527~lcl|NZ_CP054306.1_rrna_28~~1489~27` is the subject ID
     *	p: This letter may indicate the type of sequence, in this case perhaps "protein".
     *	22609: This may be an internal database identifier, which is not meaningful outside the specific database and its indexing scheme.
     *	1527: This may be another internal identifier or a reference to the sequence position within the database, but its meaning is again dependent on the database and indexing scheme used.
