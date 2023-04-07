@@ -79,30 +79,35 @@ checkm2 database –download
 ```
 checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory output_directory_name
 ```
+# IQ Tree
+- IQ-TREE supports a wide range of evolutionary models
+- All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites
 
-# iqtree2 - species tree
+## iqtree2 - species tree
 ```
 nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment
 ```
-IQ-TREE supports a wide range of evolutionary models
-All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites.
-
-# iqtree2 – gene tree | run it in loop
+## iqtree2 – gene tree | run it in loop
 ```
 nohup sh -c 'for file in /bio/data/Ruchita/faa/orthologous/msa_clustalo/*aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
 ```
 
-# Clustalo (MSA)multiple sequence alignment | run it in loop 
+# ClustalO multiple sequence alignment (MSA) | run it in loop 
+- ClustalO is a software tool used for multiple sequence alignment. It is designed to align three or more nucleotide or amino acid sequences, based on their similarity. The main purpose of ClustalO is to identify regions of similarity between the sequences, and to produce a multiple sequence alignment that maximizes the overall similarity.
 ```
 for file in /bio/data/Ruchita/faa/orthologous/*.faa; do nohup clustalo -i "$file" -o /bio/data/Ruchita/faa/orthologous/msa_clustalo"$(basename "$file" .faa)".aln > "$(basename "$file" .faa)".log & done
 ```
 
 # ALE observe | run it in loop
+- ALE (Assembly Likelihood Estimator) Observe is a software tool used in genome assembly evaluation. It is designed to compare an assembled genome to a reference genome to determine the accuracy of the assembly.
+- The tool does this by calculating the likelihood that each read in the assembly could have come from the reference genome. A high likelihood suggests that the read is likely to be correct, while a low likelihood suggests that the read may be misassembled or contain errors.
+- ALE Observe can be used to identify regions of the assembly that are likely to be correct, as well as regions that may contain errors or require further investigation. This information can be used to improve the quality of the assembly or identify potential areas of interest for further research.
 ```
 nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; done' &
 ```
 
 # ALE_undated | run it in parallel or loop
+- ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
 ```
 parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
