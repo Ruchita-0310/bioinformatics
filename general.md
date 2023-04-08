@@ -25,15 +25,15 @@ rm file_name # will remove a file
 
 ## Remove directory
 ```
-rm -d dir_name #empty directory
-rm -r dir_name #non-empty dirctory and its content
+rm -d dir_name # empty directory
+rm -r dir_name # non-empty dirctory and its content
 ```
 
 # List
 ```
-ls # list all the files in the current directory
+ls      # list all the files in the current directory
 ls -lrt # list with ownership - read/write/view...
-ls -al # hidden files
+ls -al  # hidden files
 ```
 
 # Move and/or rename
@@ -68,7 +68,7 @@ grep "pattern" filename.txt
 ```
 wget link_to_file
 wget -O newfilename.txt http://example.com/file.txt # Download a file and save it with a different name
-wget -i url_list.txt # Download multiple files from a URL list
+wget -i url_list.txt                                # Download multiple files from a URL list
 ```
 
 # Blast
