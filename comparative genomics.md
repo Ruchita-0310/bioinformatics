@@ -12,7 +12,6 @@ pip install --upgrade dist/comparative_genomics-0.1.tar.gz
 ```
 # 3. Orthologous
 - The "orthologues" software is designed to identify orthologous genes between different organisms or sequences, and to cluster them into groups of orthologous gene families.
-- 
 - Make an output directory for orthologs 
 ```
 mkdir /bio/data/Ruchita/phormidium/output 
@@ -27,17 +26,17 @@ orthologues --input_dir /bio/data/Ruchita/phormidium --output_dir /bio/data/Ruch
  2. the Tree of MAGs can be used to identify new microbial lineages that have not been previously described. By comparing MAGs from different samples, researchers can identify novel clades of microorganisms that may have important ecological or biotechnological implications.
  3. the Tree of MAGs can be used to study the functional capabilities of microbial communities. By examining the presence or absence of specific genes or pathways across the phylogenetic tree, researchers can infer the functional capabilities of different microbial clades. This can help identify novel enzymes or pathways that may have biotechnological applications, such as in the production of biofuels or other bioproducts.
 ```
-tree_of_mags –dir input directory
+tree_of_mags –dir input_directory
 ```
 # 5. FastTree
 - FastTree is a bioinformatics software tool that is commonly used for the phylogenetic analysis of DNA and protein sequences. Its main function is to construct phylogenetic trees quickly and accurately from a large number of sequences.
 ```
-FastTree inputdir/file.name > fasttree_file
+FastTree input_dir/file.name > fasttree_file
 ```
 # 6. Metaerg 
 - Metaerg is an important tool for metagenomic analysis because it allows researchers to accurately and comprehensively analyze the functional potential of complex microbial communities, and to generate insights into their roles in a wide range of biological processes.
 ```
-/bio/bin/python-env/bin/metaerg --contig_file /bio/data/Ruchita/cyano-fna --database_dir /bio/databases/metaerg 
+/bio/bin/python-env/bin/metaerg --contig_file /bio/data/directory/file_name --database_dir /bio/databases/metaerg 
 ```
 - **Results**: it will produce .xls file which can be downloaded on the computer and viewed it in excel
 # 7. Installing CheckM2
