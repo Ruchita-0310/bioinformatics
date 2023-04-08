@@ -11,6 +11,8 @@ python -m build
 pip install --upgrade dist/comparative_genomics-0.1.tar.gz
 ```
 # 3. Orthologous
+- The "orthologues" software is designed to identify orthologous genes between different organisms or sequences, and to cluster them into groups of orthologous gene families.
+- 
 - Make an output directory for orthologs 
 ```
 mkdir /bio/data/Ruchita/phormidium/output 
@@ -21,9 +23,9 @@ orthologues --input_dir /bio/data/Ruchita/phormidium --output_dir /bio/data/Ruch
 ```
 # 4. tree_of_mags
 - The Tree of MAGs is important for several reasons:
-  1. it provides a way to study the diversity of microbial communities and their evolutionary relationships. This can help researchers understand how different microbial communities are related to one another, and how they have evolved over time.
-  2. the Tree of MAGs can be used to identify new microbial lineages that have not been previously described. By comparing MAGs from different samples, researchers can identify novel clades of microorganisms that may have important ecological or biotechnological implications.
-  3. the Tree of MAGs can be used to study the functional capabilities of microbial communities. By examining the presence or absence of specific genes or pathways across the phylogenetic tree, researchers can infer the functional capabilities of different microbial clades. This can help identify novel enzymes or pathways that may have biotechnological applications, such as in the production of biofuels or other bioproducts.
+ 1. it provides a way to study the diversity of microbial communities and their evolutionary relationships. This can help researchers understand how different microbial communities are related to one another, and how they have evolved over time.
+ 2. the Tree of MAGs can be used to identify new microbial lineages that have not been previously described. By comparing MAGs from different samples, researchers can identify novel clades of microorganisms that may have important ecological or biotechnological implications.
+ 3. the Tree of MAGs can be used to study the functional capabilities of microbial communities. By examining the presence or absence of specific genes or pathways across the phylogenetic tree, researchers can infer the functional capabilities of different microbial clades. This can help identify novel enzymes or pathways that may have biotechnological applications, such as in the production of biofuels or other bioproducts.
 ```
 tree_of_mags –dir input directory
 ```
@@ -77,6 +79,9 @@ checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory out
 - IQ-TREE supports a wide range of evolutionary models
 - All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites
 ## 8.1. iqtree2 - species tree
+- Use `concatenated_alignment` file 
+- View the tree in different tree viewing programs (iTOL, RaXml, FigTree, Fasttree...)
+- In this case, iTOL was used. iTOL produces unrooted tree, and it can be rerooted at different branches in the tree. 3 different rerooted tree data were used to run ALE observe. 
 ```
 nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment
 ```
@@ -86,9 +91,13 @@ nohup sh -c 'for file in /bio/data/Ruchita/faa/orthologous/msa_clustalo/*aln; do
 ```
 # 9. ClustalO multiple sequence alignment (MSA) | run it in loop 
 - ClustalO is a software tool used for multiple sequence alignment. It is designed to align three or more nucleotide or amino acid sequences, based on their similarity. The main purpose of ClustalO is to identify regions of similarity between the sequences, and to produce a multiple sequence alignment that maximizes the overall similarity.
+- ClustalO will use .faa files that are produced after running orthologues command.
 ```
 for file in /bio/data/Ruchita/faa/orthologous/*.faa; do nohup clustalo -i "$file" -o /bio/data/Ruchita/faa/orthologous/msa_clustalo"$(basename "$file" .faa)".aln > "$(basename "$file" .faa)".log & done
 ```
+- **Results**: 
+1. 18 genes are not aligned because there is only 1 sequence
+2. The command will produce .aln.ufboot files
 # 10. ALE observe | run it in loop
 - ALE (Assembly Likelihood Estimator) Observe is a software tool used in genome assembly evaluation. It is designed to compare an assembled genome to a reference genome to determine the accuracy of the assembly.
 - The tool does this by calculating the likelihood that each read in the assembly could have come from the reference genome. A high likelihood suggests that the read is likely to be correct, while a low likelihood suggests that the read may be misassembled or contain errors.
@@ -96,13 +105,19 @@ for file in /bio/data/Ruchita/faa/orthologous/*.faa; do nohup clustalo -i "$file
 ```
 nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; done' &
 ```
+- **Results**: 
+1. The command will produce .ale files
 ## 10.1. ALE_undated | run it in parallel or loop
 - ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
+- Use the .ale files produced in the previous step to run this command
 ```
 parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
 ```
 - You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
+- **Results**:
+1. The command will produce .uml_rec and .ale.uTs files
+2. Use only .uml_rec files!
 ## 10.2. Likelihood table
 1. Move all the .ale.uml_rec files to reroot1, reroot2 and reroot3 directories respectively
 2. rename all reroot_newick2.uml_rec and reroot_newick3.uml_rec to reroot_newick
@@ -116,7 +131,9 @@ makermt likelihoods_table.mt
 consel likelihoods_table
 /bio/bin/consel/bin/catpv likelihoods_table > au_test_out 
 ```
-- Use `au_test_out` to figure out the p-vales of the rerooted trees and use the tree that has p-value 1.00
+- **Results**: 
+1. Use `au_test_out` to figure out the p-vales of the rerooted trees and use the tree that has p-value 1.00
+2. From the table, it was inferred that reroot2 was the best (further used in 10.4).
 ## 10.3. Robustness check
 - copy [DTL_ratio_analysis_ML_diff.py](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py)
 - make: roots_to_test.txt 
@@ -160,12 +177,13 @@ pyuhuli
 ```
 python DTL_ratio_analysis_ML_diff.py reroot2 LS # use the reroot tree that has a p-value of 1.00 (in this case it is reroot2)
 ```
-Results were stored in `LS_ratio_results` directory
+- **Results** 
+1. `LS_ratio_results` directory has the results
+2. Produced multiple .png files that contain graphs and .csv files that has tables.
 ```
 zip ls.zip LS_ratio_results/*
 ```
 - Downloaded the zipped file on the computer to view
-- Gave me a bunch of files and figures
 ## 10.4. Gene content evolution on the most likely rooted species tree | run it in "reroot2" directory
 ### 10.4.1. Branchwise events
 - Once the most likely root has been identified, this technique allows users to quantify the relative contributions of duplication, transfer, loss, and origination in the gene content evolution
@@ -173,8 +191,9 @@ zip ls.zip LS_ratio_results/*
 ```
 python branchwise_number_of_events.py > dtloc.tsv # run this command in reroot2 directory only!
 ```
-- Now open .tsv file and use 16 and 30 as internal nodes
-- Internal nodes play a critical role in gene content evolution analyses as they represent the points in the phylogenetic tree where gene gain and loss events are inferred to have occurred, and provide insights into the evolutionary history of the gene
+- **Results**
+1. Now open .tsv file that contains a table (use 16 and 30 as internal nodes). 
+2. Internal nodes play a critical role in gene content evolution analyses as they represent the points in the phylogenetic tree where gene gain and loss events are inferred to have occurred, and provide insights into the evolutionary history of the gene.
 ### 10.4.2. Ancestral reconstruction
 - Copy [Ancestral_reconstruction_copy_number.py](https://github.com/ak-andromeda/ALE_methods/blob/main/Ancestral_reconstruction_copy_number.py)
 ```
