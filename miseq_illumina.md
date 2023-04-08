@@ -5,7 +5,7 @@
 4. Upload it on cloud server
 
 # blastn 
-- Run blastn on "MiSeqall.otu.fasta"
+- Run blastn on "MiSeqall.otu.fasta" file
 - On cloud blast database is in this pathway /bio/databases/metaerg/db_rna.fna
 ```
 blastn -db /bio/databases/metaerg/db_rna.fna -query MiSeqall.otu.fasta -max_target_seqs 1 -outfmt 6 
@@ -31,4 +31,3 @@ blastn -db /bio/databases/metaerg/db_rna.fna -query MiSeqall.otu.fasta -max_targ
 10. s_end: the ending position of the alignment in the subject sequence
 11. evalue: the E-value of the match, representing the expected number of matches by chance
 12. bit_score: the bit score of the match, representing the strength of the match
-
