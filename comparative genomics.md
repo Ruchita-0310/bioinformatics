@@ -3,7 +3,7 @@
 source /bio/bin/python-env/bin/activate
 source /bio/bin/profile
 ```
-# 2. Cloning Dr. Marc Strous's page
+# 2. Cloning Dr. Marc Strous's Github page
 ```
 git clone https://github.com/kinestetika/ComparativeGenomics.git
 cd ComparativeGenomics/
