@@ -11,7 +11,7 @@ sudo chown arch Ruchita
 # macOS file transfer
 ```
 scp -i .ssh/ccc_cloud_ghost -o UserKnownHostsFile=/dev/null ~/Downloads/file_name.faa arch@206.12.90.119:/bio/data/Ruchita # upload files from mac to ARC
-scp -i .ssh/ccc_cloud_ghost -o UserKnownHostsFile=/dev/null  arch@206.12.90.119:/bio/data/Ruchita/file_name ~/Downloads # download files from ARC to mac
+scp -i .ssh/ccc_cloud_ghost -o UserKnownHostsFile=/dev/null  arch@206.12.90.119:/bio/data/Ruchita/file_name ~/Downloads    # download files from ARC to mac
 ```
 # Unzip
 ```
@@ -43,9 +43,9 @@ mv ./current_path/file1 ./destination_path/file1
 
 # Move from one directory to another
 ```
-cd .. # moves to previous directory
-cd ../.. # moves to 2 previous directory
-cd directoryB # moves to another directory called directoryB
+cd ..            # moves to previous directory
+cd ../..         # moves to 2 previous directory
+cd directoryB    # moves to another directory called directoryB
 cd ../directoryC # will go back to the parent directory and then go to directoryC
 ```
 
