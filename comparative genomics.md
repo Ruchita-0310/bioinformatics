@@ -86,8 +86,9 @@ checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory out
 - Use `concatenated_alignment` file 
 - View the tree in different tree viewing programs (iTOL, RaXml, FigTree, Fasttree...)
 - In this case, iTOL was used. iTOL produces unrooted tree, and it can be rerooted at different branches in the tree. 3 different rerooted tree data were used to run ALE observe. 
+- `nohup` command is a Unix/Linux command that allows you to run a command or script in the background, even after you log out of the terminal session and make sure to have `&` at the end of the command/script.
 ```
-nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment
+nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment &
 ```
 ## 8.2. iqtree2 – gene tree | run it in loop
 ```
@@ -115,7 +116,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; 
 - ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
 - Use the .ale files produced in the previous step to run this command
 ```
-parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale
+parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale  # OR
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
 ```
 - You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
