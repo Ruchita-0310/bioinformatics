@@ -115,7 +115,7 @@ nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" :::
 - You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
 
 # Likelihood table
-1. Move all the .ale.uml_rec to reroot1, reroot2 and reroot3 directories respectively
+1. Move all the .ale.uml_rec files to reroot1, reroot2 and reroot3 directories respectively
 2. rename all reroot_newick2.uml_rec and reroot_newick3.uml_rec to reroot_newick
 3. copy [write_consel_file.py3](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py) 
 
