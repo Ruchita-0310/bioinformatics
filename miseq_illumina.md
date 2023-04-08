@@ -13,8 +13,8 @@ blastn -db /bio/databases/metaerg/db_rna.fna -query MiSeqall.otu.fasta -max_targ
 - results interpretation (it will be in a table format)
 1. query_id: the identifier of the query sequence
 2. subject_id: the identifier of the matching subject sequence
-- For example: `p~22609~1527~lcl|NZ_CP054306.1_rrna_28~~1489~27` is the subject ID
-    *`p`: This letter may indicate the type of sequence, in this case perhaps "protein".
+- For example: `p~22609~1527~lcl|NZ_CP054306.1_rrna_28~~1489~27` is the subject ID:
+    * `p`: This letter may indicate the type of sequence, in this case perhaps "protein".
     *	`22609`: This may be an internal database identifier, which is not meaningful outside the specific database and its indexing scheme.
     *	`1527`: This may be another internal identifier or a reference to the sequence position within the database, but its meaning is again dependent on the database and indexing scheme used.
     *	`lcl|NZ_CP054306.1_rrna_28`: This is the sequence identifier for the matching subject sequence in the NCBI nucleotide database (nt), specifically for the genome assembly with accession number NZ_CP054306.1. The lcl prefix may indicate that this is a local sequence identifier, rather than a stable accession number. The rest of the string rrna_28 likely refers to the type of sequence (ribosomal RNA, in this case the 28S subunit).
