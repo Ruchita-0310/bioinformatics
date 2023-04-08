@@ -164,7 +164,7 @@ zip ls.zip LS_ratio_results/*
 ```
 - Downloaded the zipped file on the computer to view
 - Gave me a bunch of files and figures
-## 10.4. Gene content evolution on the most likely rooted species tree
+## 10.4. Gene content evolution on the most likely rooted species tree | run it in "reroot2" directory
 ### 10.4.1. Branchwise events
 - Once the most likely root has been identified, this technique allows users to quantify the relative contributions of duplication, transfer, loss, and origination in the gene content evolution
 - copy [branchwise_number_of_events.py](https://github.com/ak-andromeda/ALE_methods/blob/main/branchwise_number_of_events.py)
