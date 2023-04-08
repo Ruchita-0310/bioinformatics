@@ -180,4 +180,4 @@ Results were stored in `LS_ratio_results` directory
 zip ls.zip LS_ratio_results/*
 ```
 - Downloaded the zip file on the computer
-- Gave me a bunch of files 
+- Gave me a bunch of files and figures
