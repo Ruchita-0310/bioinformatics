@@ -39,6 +39,7 @@ FastTree inputdir/file.name > fasttree_file
 ```
 /bio/bin/python-env/bin/metaerg --contig_file /bio/data/Ruchita/cyano-fna --database_dir /bio/databases/metaerg 
 ```
+- **Results**: it will produce .xls file which can be downloaded on the computer and viewed it in excel
 # 7. Installing CheckM2
 1.	Install [python 3.8](https://aur.archlinux.org/packages/python38):
 ```
@@ -71,7 +72,11 @@ pip install checkm2
 ```
 checkm2 database –download
 ```
-8. Checkm2 command:
+8. Checkm2 command: [OPTIONS]
+`-t 30`: specifies the number of CPU threads to use for the computation (in this case, 30 threads).
+`-x fna`: specifies the input file format as FNA.
+`--input {input_directory_name.fna}`: specifies the directory containing the input files to analyze.
+`--output-directory {output_directory_name}`: specifies the name of the output directory where the results will be saved.
 ```
 checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory output_directory_name
 ```
