@@ -1,16 +1,16 @@
-# 1 Activate python and other pathways
+# 1. Activate python and other pathways
 ```
 source /bio/bin/python-env/bin/activate
 source /bio/bin/profile
 ```
-# 2 Cloning Marc's page
+# 2. Cloning Marc's page
 ```
 git clone https://github.com/kinestetika/ComparativeGenomics.git
 cd ComparativeGenomics/
 python -m build
 pip install --upgrade dist/comparative_genomics-0.1.tar.gz
 ```
-# 3 Orthologous
+# 3. Orthologous
 - output directory for orthologs 
 ```
 mkdir /bio/data/Ruchita/phormidium/output 
@@ -19,7 +19,7 @@ mkdir /bio/data/Ruchita/phormidium/output
 ```
 orthologues --input_dir /bio/data/Ruchita/phormidium --output_dir /bio/data/Ruchita/phormidium/output 
 ```
-# 4 tree_of_mags
+# 4. tree_of_mags
 - The Tree of MAGs is important for several reasons:
 1. it provides a way to study the diversity of microbial communities and their evolutionary relationships. This can help researchers understand how different microbial communities are related to one another, and how they have evolved over time.
 2. the Tree of MAGs can be used to identify new microbial lineages that have not been previously described. By comparing MAGs from different samples, researchers can identify novel clades of microorganisms that may have important ecological or biotechnological implications.
@@ -27,15 +27,15 @@ orthologues --input_dir /bio/data/Ruchita/phormidium --output_dir /bio/data/Ruch
 ```
 tree_of_mags –dir input directory
 ```
-# 5 FastTree
+# 5. FastTree
 ```
 FastTree inputdir/file.name > fasttree_file
 ```
-# 6 Metaerg 
+# 6. Metaerg 
 ```
 /bio/bin/python-env/bin/metaerg --contig_file /bio/data/Ruchita/cyano-fna --database_dir /bio/databases/metaerg 
 ```
-# 7 Installing CheckM2
+# 7. Installing CheckM2
 1.	Install [python 3.8](https://aur.archlinux.org/packages/python38):
 ```
 cd /bio/bin
@@ -71,37 +71,37 @@ checkm2 database –download
 ```
 checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory output_directory_name
 ```
-# 8 IQ Tree
+# 8. IQ Tree
 - IQ-TREE supports a wide range of evolutionary models
 - All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites
-## 8.1 iqtree2 - species tree
+## 8.1. iqtree2 - species tree
 ```
 nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment
 ```
-## 8.2 iqtree2 – gene tree | run it in loop
+## 8.2. iqtree2 – gene tree | run it in loop
 ```
 nohup sh -c 'for file in /bio/data/Ruchita/faa/orthologous/msa_clustalo/*aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
 ```
-# 9 ClustalO multiple sequence alignment (MSA) | run it in loop 
+# 9. ClustalO multiple sequence alignment (MSA) | run it in loop 
 - ClustalO is a software tool used for multiple sequence alignment. It is designed to align three or more nucleotide or amino acid sequences, based on their similarity. The main purpose of ClustalO is to identify regions of similarity between the sequences, and to produce a multiple sequence alignment that maximizes the overall similarity.
 ```
 for file in /bio/data/Ruchita/faa/orthologous/*.faa; do nohup clustalo -i "$file" -o /bio/data/Ruchita/faa/orthologous/msa_clustalo"$(basename "$file" .faa)".aln > "$(basename "$file" .faa)".log & done
 ```
-# 10 ALE observe | run it in loop
+# 10. ALE observe | run it in loop
 - ALE (Assembly Likelihood Estimator) Observe is a software tool used in genome assembly evaluation. It is designed to compare an assembled genome to a reference genome to determine the accuracy of the assembly.
 - The tool does this by calculating the likelihood that each read in the assembly could have come from the reference genome. A high likelihood suggests that the read is likely to be correct, while a low likelihood suggests that the read may be misassembled or contain errors.
 - ALE Observe can be used to identify regions of the assembly that are likely to be correct, as well as regions that may contain errors or require further investigation. This information can be used to improve the quality of the assembly or identify potential areas of interest for further research.
 ```
 nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; done' &
 ```
-## 10.1 ALE_undated | run it in parallel or loop
+## 10.1. ALE_undated | run it in parallel or loop
 - ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
 ```
 parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
 ```
 - You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
-## 10.2 Likelihood table
+## 10.2. Likelihood table
 1. Move all the .ale.uml_rec files to reroot1, reroot2 and reroot3 directories respectively
 2. rename all reroot_newick2.uml_rec and reroot_newick3.uml_rec to reroot_newick
 3. copy [write_consel_file.py3](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py) 
@@ -115,7 +115,7 @@ consel likelihoods_table
 /bio/bin/consel/bin/catpv likelihoods_table > au_test_out 
 ```
 - Use `au_test_out` to figure out the p-vales of the rerooted trees and use the tree that has p-value 1.00
-## 10.3 Robustness check
+## 10.3. Robustness check
 - copy [DTL_ratio_analysis_ML_diff.py](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py)
 - make: roots_to_test.txt 
 ```
@@ -164,8 +164,8 @@ zip ls.zip LS_ratio_results/*
 ```
 - Downloaded the zipped file on the computer to view
 - Gave me a bunch of files and figures
-## 10.4 Gene content evolution on the most likely rooted species tree
-### 10.4.1 Branchwise events
+## 10.4. Gene content evolution on the most likely rooted species tree
+### 10.4.1. Branchwise events
 - Once the most likely root has been identified, this technique allows users to quantify the relative contributions of duplication, transfer, loss, and origination in the gene content evolution
 - copy [branchwise_number_of_events.py](https://github.com/ak-andromeda/ALE_methods/blob/main/branchwise_number_of_events.py)
 ```
@@ -173,7 +173,7 @@ python branchwise_number_of_events.py > dtloc.tsv # run this command in reroot2 
 ```
 - Now open .tsv file and use 16 and 30 as internal nodes
 - Internal nodes play a critical role in gene content evolution analyses as they represent the points in the phylogenetic tree where gene gain and loss events are inferred to have occurred, and provide insights into the evolutionary history of the gene
-### 10.4.2 Ancestral reconstruction
+### 10.4.2. Ancestral reconstruction
 - Copy [Ancestral_reconstruction_copy_number.py](https://github.com/ak-andromeda/ALE_methods/blob/main/Ancestral_reconstruction_copy_number.py)
 ```
 nano Ancestral_reconstruction_copy_number.py # change .ml_rec to .uml_rec
