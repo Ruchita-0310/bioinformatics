@@ -3,7 +3,7 @@
 source /bio/bin/python-env/bin/activate
 source /bio/bin/profile
 ```
-# 2. Cloning Marc's page
+# 2. Cloning Dr. Marc Strous's page
 ```
 git clone https://github.com/kinestetika/ComparativeGenomics.git
 cd ComparativeGenomics/
@@ -182,7 +182,7 @@ pyuhuli
 ```
 python DTL_ratio_analysis_ML_diff.py reroot2 LS # use the reroot tree that has a p-value of 1.00 (in this case it is reroot2)
 ```
-- **Results** 
+- **Results**:
 1. `LS_ratio_results` directory has the results
 2. Produced multiple .png files that contain graphs and .csv files that has tables.
 ```
@@ -196,7 +196,7 @@ zip ls.zip LS_ratio_results/*
 ```
 python branchwise_number_of_events.py > dtloc.tsv # run this command in reroot2 directory only!
 ```
-- **Results**
+- **Results**:
 1. Now open .tsv file that contains a table (use 16 and 30 as internal nodes). 
 2. Internal nodes play a critical role in gene content evolution analyses as they represent the points in the phylogenetic tree where gene gain and loss events are inferred to have occurred, and provide insights into the evolutionary history of the gene.
 ### 10.4.2. Ancestral reconstruction
@@ -210,5 +210,5 @@ nano Ancestral_reconstruction_copy_number.py # change .ml_rec to .uml_rec
 ```
 python Ancestral_reconstruction_copy_number.py 0.5 16 30
 ```
-- Results will be in `Total_copies_at_node` and `Gene_families_at_each_node` directories
+- **Results**: `Total_copies_at_node` and `Gene_families_at_each_node` directories will contain .csv files
 - Zip it and download it to your computer to view
