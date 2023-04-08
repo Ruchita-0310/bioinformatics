@@ -1,10 +1,10 @@
-# Metaamp
+# 1. Metaamp
 1. Run fastq.gz files under OTU and/or ASV
 2. Results will be multiple folder
 3. Open "otu_and_taxonomy"
 4. Upload it on cloud server
 
-# blastn 
+# 2. blastn 
 - Run blastn on "MiSeqall.otu.fasta" file
 - On cloud blast database is in this pathway /bio/databases/metaerg/db_rna.fna
 ```
