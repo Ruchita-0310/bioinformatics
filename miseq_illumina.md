@@ -31,3 +31,10 @@ blastn -db /bio/databases/metaerg/db_rna.fna -query MiSeqall.otu.fasta -max_targ
 10. s_end: the ending position of the alignment in the subject sequence
 11. evalue: the E-value of the match, representing the expected number of matches by chance
 12. bit_score: the bit score of the match, representing the strength of the match
+## Taxonomy
+For example `p~29066~1527~lcl|NZ_FWFK01000013.1_rrna_11~~1451~10` use `29066` to identify the taxonomy of the OTU. 
+```
+cd /bio/databases/metaerg/
+grep 22609 db_taxonomy.txt
+```
+Result will be: `p	29066	Bacteria~Cyanobacteria~Cyanobacteriia~Cyanobacteriales~Microcystaceae_A~Synechocystis~Synechocystis	True	GCF_018282115.1`
