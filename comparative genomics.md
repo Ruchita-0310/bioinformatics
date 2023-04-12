@@ -142,6 +142,7 @@ consel likelihoods_table
 2. From the table, it was inferred that reroot2 was the best (further used in 10.4).
 ## 10.4. Robustness check
 - copy [DTL_ratio_analysis_ML_diff.py](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py)
+- move all the reroots (1 and 3) to a directory and run this program. Make sure the DTL code is in the same directory.
 - make: roots_to_test.txt 
 ```
 nano DTL_ratio_analysis_ML_diff.py
