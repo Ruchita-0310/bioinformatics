@@ -73,7 +73,7 @@ checkm2 database –download
 ```
 8. Checkm2 command: [OPTIONS]
 `-t 30`: specifies the number of CPU threads to use for the computation (in this case, 30 threads).
-`-x fna`: specifies the input file format as FNA.
+`-x fna`: specifies the input file format as fna.
 `--input {input_directory_name.fna}`: specifies the directory containing the input files to analyze.
 `--output-directory {output_directory_name}`: specifies the name of the output directory where the results will be saved.
 ```
@@ -194,10 +194,10 @@ zip ls.zip LS_ratio_results/*
 - Downloaded the zipped file on the computer to view
 ## 10.5. Gene content evolution on the most likely rooted species tree | run it in "reroot2" directory
 ### 10.5.1. Branchwise events
-- Once the most likely root has been identified, this technique allows users to quantify the relative contributions of duplication, transfer, loss, and origination in the gene content evolution
+- Once the most likely root has been identified, this technique allows users to quantify the relative contributions of duplication, transfer, loss, and origination in the gene content evolution.
 - Copy [branchwise_number_of_events.py](https://github.com/ak-andromeda/ALE_methods/blob/main/branchwise_number_of_events.py)
 ```
-python branchwise_number_of_events.py > dtloc.tsv # run this command in reroot2 directory only!
+python branchwise_number_of_events.py > dtloc.tsv 
 ```
 - **Results**:
 1. Now open .tsv file that contains a table (use 16 and 30 as internal nodes). 
@@ -207,19 +207,19 @@ python branchwise_number_of_events.py > dtloc.tsv # run this command in reroot2 
 ```
 nano Ancestral_reconstruction_copy_number.py # change .ml_rec to .uml_rec
 ```
-- The ALE output also provides estimates of the gene families present at each node. Therefore we can model the presence and absence of gene families at internal nodes, reconstructing ancestral genomes
-- There are three command line arguments. The first is the minimum copy number at which a gene family should be included in the reconstruction , i.e., 0.5 = on average, half a copy of the family is present at the node in question (fractions are possible because the value is averaged over the sampled reconciliations)
-- The secondnd third arguments are the range of the internal nodes. For example, in this dataset the internal nodes are labelled 16, 17, 18... 30 (as can be seen in the output of branchwise_number_of_events.py). Thus, the command line arguments are 16 and 30. All nodes between 16 and 30 will be reconstructed
-- The results will give only "copies" at every node
+- The ALE output also provides estimates of the gene families present at each node. Therefore we can model the presence and absence of gene families at internal nodes, reconstructing ancestral genomes.
+- There are three command line arguments. The first is the minimum copy number at which a gene family should be included in the reconstruction , i.e., 0.5 = on average, half a copy of the family is present at the node in question (fractions are possible because the value is averaged over the sampled reconciliations).
+- The secondnd third arguments are the range of the internal nodes. For example, in this dataset the internal nodes are labelled 16, 17, 18... 30 (as can be seen in the output of branchwise_number_of_events.py). Thus, the command line arguments are 16 and 30. All nodes between 16 and 30 will be reconstructed.
+- The results will give only "copies" at every node.
 ```
 python Ancestral_reconstruction_copy_number.py 0.5 16 30
 ```
 - Copy to [modify the ancestral reconstruction](https://github.com/vmkhot/Comparative-Genomics-Verruco/blob/master/ancestral_trial/ancestral_modified_VK.py)
-- The modifications include duplications, transfers, losses, originations and copies 
+- The modifications include duplications, transfers, losses, originations and copies. 
 ```
 python ancestral_modified.py 0.5 16 30
 ```
 - **Results**: 
 1. `Total_copies_at_node` and `Gene_families_at_each_node` directories will contain .csv files
 2. Zip it and download it to your computer to view
-3. Results of modified ancestral reconstruction are in `Total_copies_at_node` directory. `Copies_at_each_node.csv` and `Sum_of_DTLSC_at_each_node.csv` files have all the results
+3. Results of "modified ancestral reconstruction" are in `Total_copies_at_node` directory. `Copies_at_each_node.csv` and `Sum_of_DTLSC_at_each_node.csv` files have all the results.
