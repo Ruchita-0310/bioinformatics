@@ -10,42 +10,7 @@ cd ComparativeGenomics/
 python -m build
 pip install --upgrade dist/comparative_genomics-0.1.tar.gz
 ```
-# 3. Make a species tree
-- make a species tree using IQ tree, FastTree, and Raxml
-- genes used to make the tree: Conserved Single Copy Genes
-# 4. Orthologous
-- The "orthologues" software is designed to identify orthologous genes between different organisms or sequences, and to cluster them into groups of orthologous gene families.
-- Make an output directory for orthologs 
-```
-mkdir /bio/data/Ruchita/phormidium/output 
-```
-- Orthologs command line (remove all the non .faa files)
-```
-orthologues --input_dir /bio/data/Ruchita/phormidium --output_dir /bio/data/Ruchita/phormidium/output 
-```
-**Results**
-- detects homology
-- creates 1000s of clusters (.fasta files) of homology
-# 5. tree_of_mags
-- The Tree of MAGs is important for several reasons:
- 1. it provides a way to study the diversity of microbial communities and their evolutionary relationships. This can help researchers understand how different microbial communities are related to one another, and how they have evolved over time.
- 2. the Tree of MAGs can be used to identify new microbial lineages that have not been previously described. By comparing MAGs from different samples, researchers can identify novel clades of microorganisms that may have important ecological or biotechnological implications.
- 3. the Tree of MAGs can be used to study the functional capabilities of microbial communities. By examining the presence or absence of specific genes or pathways across the phylogenetic tree, researchers can infer the functional capabilities of different microbial clades. This can help identify novel enzymes or pathways that may have biotechnological applications, such as in the production of biofuels or other bioproducts.
-```
-tree_of_mags –dir input_directory
-```
-# 6. FastTree
-- FastTree is a bioinformatics software tool that is commonly used for the phylogenetic analysis of DNA and protein sequences. Its main function is to construct phylogenetic trees quickly and accurately from a large number of sequences.
-```
-FastTree input_dir/file.name > fasttree_file
-```
-# 7. Metaerg 
-- Metaerg is an important tool for metagenomic analysis because it allows researchers to accurately and comprehensively analyze the functional potential of complex microbial communities, and to generate insights into their roles in a wide range of biological processes.
-```
-/bio/bin/python-env/bin/metaerg --contig_file /bio/data/directory/file_name --database_dir /bio/databases/metaerg 
-```
-- **Results**: it will produce .xls file which can be downloaded on the computer and viewed it in excel
-# 8. Installing CheckM2
+# 3. Installing CheckM2
 1.	Install [python 3.8](https://aur.archlinux.org/packages/python38):
 ```
 cd /bio/bin
@@ -87,6 +52,35 @@ checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory out
 ```
 **Results**
 - Removed all the species with less than 90% completeness.
+# 4. Make a species tree
+- make a species tree using IQ tree, FastTree, and Raxml
+- genes used to make the tree: Conserved Single Copy Genes
+## 4.1. FastTree
+- FastTree is a bioinformatics software tool that is commonly used for the phylogenetic analysis of DNA and protein sequences. Its main function is to construct phylogenetic trees quickly and accurately from a large number of sequences.
+```
+FastTree input_dir/file.name > fasttree_file
+```
+# 5. Orthologous
+- The "orthologues" software is designed to identify orthologous genes between different organisms or sequences, and to cluster them into groups of orthologous gene families.
+- Make an output directory for orthologs 
+```
+mkdir /bio/data/Ruchita/phormidium/output 
+```
+- Orthologs command line (remove all the non .faa files)
+```
+orthologues --input_dir /bio/data/Ruchita/phormidium --output_dir /bio/data/Ruchita/phormidium/output 
+```
+**Results**
+- detects homology
+- creates 1000s of clusters (.fasta files) of homology
+# 6. tree_of_mags
+- The Tree of MAGs is important for several reasons:
+ 1. it provides a way to study the diversity of microbial communities and their evolutionary relationships. This can help researchers understand how different microbial communities are related to one another, and how they have evolved over time.
+ 2. the Tree of MAGs can be used to identify new microbial lineages that have not been previously described. By comparing MAGs from different samples, researchers can identify novel clades of microorganisms that may have important ecological or biotechnological implications.
+ 3. the Tree of MAGs can be used to study the functional capabilities of microbial communities. By examining the presence or absence of specific genes or pathways across the phylogenetic tree, researchers can infer the functional capabilities of different microbial clades. This can help identify novel enzymes or pathways that may have biotechnological applications, such as in the production of biofuels or other bioproducts.
+```
+tree_of_mags –dir input_directory
+```
 # 9. IQ Tree
 - IQ-TREE supports a wide range of evolutionary models
 - All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites
