@@ -194,7 +194,7 @@ zip ls.zip LS_ratio_results/*
 ## 10.5. Gene content evolution on the most likely rooted species tree | run it in "reroot2" directory
 ### 10.5.1. Branchwise events
 - Once the most likely root has been identified, this technique allows users to quantify the relative contributions of duplication, transfer, loss, and origination in the gene content evolution
-- copy [branchwise_number_of_events.py](https://github.com/ak-andromeda/ALE_methods/blob/main/branchwise_number_of_events.py)
+- Copy [branchwise_number_of_events.py](https://github.com/ak-andromeda/ALE_methods/blob/main/branchwise_number_of_events.py)
 ```
 python branchwise_number_of_events.py > dtloc.tsv # run this command in reroot2 directory only!
 ```
@@ -212,6 +212,12 @@ nano Ancestral_reconstruction_copy_number.py # change .ml_rec to .uml_rec
 ```
 python Ancestral_reconstruction_copy_number.py 0.5 16 30
 ```
+- Copy [https://github.com/vmkhot/Comparative-Genomics-Verruco/blob/master/ancestral_trial/ancestral_modified_VK.py] to "modify the ancestral reconstruction"
+```
+python ancestral_modified.py 0.5 16 30
+```
 - **Results**: 
 1. `Total_copies_at_node` and `Gene_families_at_each_node` directories will contain .csv files
 2. Zip it and download it to your computer to view
+3. Results of modified ancestral reconstruction are in `Total_copies_at_node` directory
+   `Copies_at_each_node.csv` and `Sum_of_DTLSC_at_each_node.csv` files have all the results
