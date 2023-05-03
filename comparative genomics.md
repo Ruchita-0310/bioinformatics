@@ -212,5 +212,6 @@ nano Ancestral_reconstruction_copy_number.py # change .ml_rec to .uml_rec
 ```
 python Ancestral_reconstruction_copy_number.py 0.5 16 30
 ```
-- **Results**: `Total_copies_at_node` and `Gene_families_at_each_node` directories will contain .csv files
-- Zip it and download it to your computer to view
+- **Results**: 
+1. `Total_copies_at_node` and `Gene_families_at_each_node` directories will contain .csv files
+2. Zip it and download it to your computer to view
