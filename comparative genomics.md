@@ -85,6 +85,8 @@ checkm2 database –download
 ```
 checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory output_directory_name
 ```
+**Results**
+- Removed all the species with less than 90% completeness.
 # 9. IQ Tree
 - IQ-TREE supports a wide range of evolutionary models
 - All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites
