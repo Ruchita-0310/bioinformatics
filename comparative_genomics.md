@@ -50,6 +50,7 @@ checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory out
 ```
 **Results**
 - Removed all the species with less than 90% completeness.
+- 5 genomes were removed.
 # 3. Make a species tree
 - make a species tree using IQ tree, FastTree, and/or Raxml
 - genes used to make the tree: Conserved Single Copy Genes
