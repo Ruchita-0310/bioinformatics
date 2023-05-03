@@ -81,11 +81,17 @@ orthologues --input_dir /bio/data/Ruchita/phormidium --output_dir /bio/data/Ruch
 ```
 tree_of_mags –dir input_directory
 ```
-# 9. IQ Tree
+# 7. Metaerg 
+- Metaerg is an important tool for metagenomic analysis because it allows researchers to accurately and comprehensively analyze the functional potential of complex microbial communities, and to generate insights into their roles in a wide range of biological processes.
+```
+/bio/bin/python-env/bin/metaerg --contig_file /bio/data/directory/file_name --database_dir /bio/databases/metaerg 
+```
+- **Results**: it will produce .xls file which can be downloaded on the computer and viewed it in excel
+# 8. IQ Tree
 - IQ-TREE supports a wide range of evolutionary models
 - All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites
 - fastbootstrap 1000: creats 1000 trees 
-## 9.1. iqtree2 - species tree
+## 8.1. iqtree2 - species tree
 - Use `concatenated_alignment` file 
 - View the tree in different tree viewing programs (iTOL, RaXml, FigTree, Fasttree...)
 - In this case, iTOL was used. iTOL produces unrooted tree, and it can be rerooted at different branches in the tree. 3 different rerooted tree data were used to run ALE observe. 
@@ -93,11 +99,11 @@ tree_of_mags –dir input_directory
 ```
 nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment &
 ```
-## 9.2. iqtree2 – gene tree | run it in loop
+## 8.2. iqtree2 – gene tree | run it in loop
 ```
 nohup sh -c 'for file in /bio/data/Ruchita/faa/orthologous/msa_clustalo/*aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
 ```
-# 10. ClustalO multiple sequence alignment (MSA) | run it in loop 
+# 9. ClustalO multiple sequence alignment (MSA) | run it in loop 
 - ClustalO is a software tool used for multiple sequence alignment. It is designed to align three or more nucleotide or amino acid sequences, based on their similarity. The main purpose of ClustalO is to identify regions of similarity between the sequences, and to produce a multiple sequence alignment that maximizes the overall similarity.
 - ClustalO will use .faa files that are produced after running orthologues command.
 ```
@@ -106,8 +112,8 @@ for file in /bio/data/Ruchita/faa/orthologous/*.faa; do nohup clustalo -i "$file
 - **Results**: 
 1. 18 genes are not aligned because there is only 1 sequence
 2. The command will produce .aln.ufboot files
-# 11. Constructing Gene Family Alignments
-## 11.1 ALE observe | run it in loop
+# 10. Constructing Gene Family Alignments
+## 10.1 ALE observe | run it in loop
 - ALE (Amalgamated Likelihood Estimation) Observe is a software tool used in genome assembly evaluation. It is designed to compare an assembled genome to a reference genome to determine the accuracy of the assembly.
 - The tool does this by calculating the likelihood that each read in the assembly could have come from the reference genome. A high likelihood suggests that the read is likely to be correct, while a low likelihood suggests that the read may be misassembled or contain errors.
 - ALE Observe can be used to identify regions of the assembly that are likely to be correct, as well as regions that may contain errors or require further investigation. This information can be used to improve the quality of the assembly or identify potential areas of interest for further research.
@@ -116,7 +122,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; 
 ```
 - **Results**: 
 1. The command will produce .ale files
-## 11.2. ALE_undated | run it in parallel or loop
+## 10.2. ALE_undated | run it in parallel or loop
 - ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
 - Use the .ale files produced in the previous step to run this command
 ```
@@ -143,7 +149,7 @@ consel likelihoods_table
 - **Results**: 
 1. Use `au_test_out` to figure out the p-vales of the rerooted trees and use the tree that has p-value 1.00
 2. From the table, it was inferred that reroot2 was the best (further used in 10.4).
-## 11.4. Robustness check
+## 10.4. Robustness check
 - copy [DTL_ratio_analysis_ML_diff.py](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py)
 - move all the reroots (1 and 3) to a directory and run this program. Make sure the DTL code is in the same directory.
 - make: roots_to_test.txt 
@@ -195,8 +201,8 @@ python DTL_ratio_analysis_ML_diff.py reroot2 LS # use the reroot tree that has a
 zip ls.zip LS_ratio_results/*
 ```
 - Downloaded the zipped file on the computer to view
-## 11.5. Gene content evolution on the most likely rooted species tree | run it in "reroot2" directory
-### 11.5.1. Branchwise events
+## 10.5. Gene content evolution on the most likely rooted species tree | run it in "reroot2" directory
+### 10.5.1. Branchwise events
 - Once the most likely root has been identified, this technique allows users to quantify the relative contributions of duplication, transfer, loss, and origination in the gene content evolution.
 - Copy [branchwise_number_of_events.py](https://github.com/ak-andromeda/ALE_methods/blob/main/branchwise_number_of_events.py)
 ```
@@ -205,7 +211,7 @@ python branchwise_number_of_events.py > dtloc.tsv
 - **Results**:
 1. Now open .tsv file that contains a table (use 16 and 30 as internal nodes). 
 2. Internal nodes play a critical role in gene content evolution analyses as they represent the points in the phylogenetic tree where gene gain and loss events are inferred to have occurred, and provide insights into the evolutionary history of the gene.
-### 11.5.2. Ancestral reconstruction
+### 10.5.2. Ancestral reconstruction
 - Copy [Ancestral_reconstruction_copy_number.py](https://github.com/ak-andromeda/ALE_methods/blob/main/Ancestral_reconstruction_copy_number.py)
 ```
 nano Ancestral_reconstruction_copy_number.py # change .ml_rec to .uml_rec
