@@ -219,5 +219,4 @@ python ancestral_modified.py 0.5 16 30
 - **Results**: 
 1. `Total_copies_at_node` and `Gene_families_at_each_node` directories will contain .csv files
 2. Zip it and download it to your computer to view
-3. Results of modified ancestral reconstruction are in `Total_copies_at_node` directory
-   `Copies_at_each_node.csv` and `Sum_of_DTLSC_at_each_node.csv` files have all the results
+3. Results of modified ancestral reconstruction are in `Total_copies_at_node` directory. `Copies_at_each_node.csv` and `Sum_of_DTLSC_at_each_node.csv` files have all the results
