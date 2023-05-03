@@ -187,6 +187,7 @@ python DTL_ratio_analysis_ML_diff.py reroot2 LS # use the reroot tree that has a
 - **Results**:
 1. `LS_ratio_results` directory has the results
 2. Produced multiple .png files that contain graphs and .csv files that has tables.
+3. Understanding the graph: the maximum likelihood "root" is the dotted line at 0. Use this root for further analysis. 
 ```
 zip ls.zip LS_ratio_results/*
 ```
