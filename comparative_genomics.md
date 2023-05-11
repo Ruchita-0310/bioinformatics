@@ -229,8 +229,11 @@ python ancestral_modified.py 0.5 16 30
 4. Results of "modified ancestral reconstruction" are in `Total_copies_at_node` directory. `Copies_at_each_node.csv` and `Sum_of_DTLSC_at_each_node.csv` files have the results.
 ### 8.5.3 Annotating results using Copies_at_each_node.csv file
 1. Since this project focuses only on CRISPR - Cas sytem and toxin-antitoxin, use [CRISPR_annotation_lookup.py](https://github.com/Ruchita-0310/bioinformatics/blob/main/CRISPR_annotation_lookup.py)
+```
+python3 CRISPR_annotation_lookup.py
+```
 2. Use Jackie's manuscript (24365 - csm6, 24366 - csm6gr7, 24367 - csx19, 24368 - csm6gr7, 24369 - csm6gr7, 24370 - Cas10, 13454 - putative antitoxin, and 13455 - putative toxin)
-3. `cds.faa` files contains only 8 genes mentioned above
+3. `cds.faa` files contains only 8 sequences mentioned above
 4. Make a blast database: 
    1. Make blast database using csd.faa `-db cds.faa`
    2. Use blastx: the database used is `-db cds.faa` and the query is `concat.faa` which contains all .faa genome files
