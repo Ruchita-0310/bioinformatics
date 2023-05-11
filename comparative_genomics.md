@@ -236,8 +236,8 @@ python3 CRISPR_annotation_lookup.py
 3. `cds.faa` files contains only 8 sequences mentioned above
 4. Make a blast database: 
    1. Make blast database using csd.faa `-db cds.faa`
-   2. Use blastx: the database used is `-db cds.faa` and the query is `concat.faa` which contains all .faa genome files
+   2. Use blastp: the database used is `-db cds.faa` and the query is `concat.faa` which contains all .faa genome files
 ```
 makeblastdb -in cds.faa -dbtype prot
-blastx -db cds.faa -query concat.faa -out blastx.out -outfmt 6
+blastp -db cds.faa -query concat.faa -out blastx.out -outfmt 6
 ```
