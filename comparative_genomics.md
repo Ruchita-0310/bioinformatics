@@ -239,5 +239,6 @@ python3 CRISPR_annotation_lookup.py
    2. Use blastp: the database used is `-db cds.faa` and the query is `concat.faa` which contains all .faa genome files
 ```
 makeblastdb -in cds.faa -dbtype prot
-blastp -db cds.faa -query concat.faa -out blastx.out -outfmt 6
+cat Baaleninemasimplex.faa cyanoSBC.faa cyanoSID2.faa gBBD.faa GeitlerinemaP-1104.faa GeitlerinemaPCC_9228.faa gFC2.faa MicrocoleusPCC_7113.faa pBIN05.faa pha.faa placuna.faa pOSCR.faa pSHIP.faa pwillei.faa pyuhuli.faa Sodalinemagerasimenkoae.faa > concat.faa 
+blastp -db concatf.faa -query cds.faa -out blastx.out -outfmt 6
 ```
