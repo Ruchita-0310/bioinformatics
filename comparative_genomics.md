@@ -228,13 +228,9 @@ python ancestral_modified.py 0.5 16 30
 3. `Gene_families_at_each_node`: This directory contains all the "Node_X_genes_present.csv" files. You can use this directory to browse the gene families present at each node. Node_X_genes_present.csv: These files contain a list of gene families that meet the cutoff criteria at a specific node X. For example, if the script finds that node 5 has 10 gene families that meet the cutoff criteria, it will create a file called "Node_5_genes_present.csv" that contains a list of those gene families. You can use these files to get a more detailed view of the gene families present at each node.
 4. Results of "modified ancestral reconstruction" are in `Total_copies_at_node` directory. `Copies_at_each_node.csv` and `Sum_of_DTLSC_at_each_node.csv` files have the results.
 ### 8.5.3 Annotating results 
-1. Since this project focuses only on CRISPR - Cas sytem and toxin-antitoxin, use [CRISPR_annotation_lookup.py](https://github.com/Ruchita-0310/bioinformatics/blob/main/CRISPR_annotation_lookup.py)
-```
-python3 CRISPR_annotation_lookup.py
-```
-2. Use Jackie's manuscript (24365 - csm6, 24366 - csm6gr7, 24367 - csx19, 24368 - csm6gr7, 24369 - csm6gr7, 24370 - Cas10, 13454 - putative antitoxin, and 13455 - putative toxin)
-3. `cds.faa` files contains only 8 sequences mentioned above
-4. Make a blast database: 
+1. Use Jackie's manuscript (24365 - csm6, 24366 - csm6gr7, 24367 - csx19, 24368 - csm6gr7, 24369 - csm6gr7, 24370 - Cas10, 13454 - putative antitoxin, and 13455 - putative toxin)
+2. `cds.faa` files contains only 8 sequences mentioned above
+3. Make a blast database: 
    1. Make blast database using csd.faa `-db cds.faa`
    2. Use blastp: the database used is `-db cds.faa` and the query is `concat.faa` which contains all .faa genome files
 ```
@@ -242,3 +238,4 @@ makeblastdb -in cds.faa -dbtype prot
 cat Baaleninemasimplex.faa cyanoSBC.faa cyanoSID2.faa gBBD.faa GeitlerinemaP-1104.faa GeitlerinemaPCC_9228.faa gFC2.faa MicrocoleusPCC_7113.faa pBIN05.faa pha.faa placuna.faa pOSCR.faa pSHIP.faa pwillei.faa pyuhuli.faa Sodalinemagerasimenkoae.faa > concat.faa 
 blastp -db concatf.faa -query cds.faa -out blastx.out -outfmt 6
 ```
+4. Blastp will produce a table with query ID,	subject ID,	% identity,	alignment length,	mismatches,	gap opening,	query start,	query end,	subject start,	subject end,	e-value, and	bit score.
