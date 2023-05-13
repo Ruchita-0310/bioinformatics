@@ -119,7 +119,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; 
 ## 8.2. ALE_undated | run it in parallel or loop
 1. ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
 2. Use the .ale files produced in the previous step to run this command
-3. Use iTOL to reroot the unrooted trees. In this case, the tree was rerooted at 3 different places. Hence 3 different directories named as `reroot1`, `reroot2`, and `reroot3`. 
+3. Use iTOL to reroot the unrooted trees. In this case, the tree was rerooted at 3 different places. Hence 3 different names as `reroot_newick1`, `reroot_newick2`, and `reroot_newick3`. 
 ```
 parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale  # OR
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
