@@ -56,7 +56,7 @@ for gene_family in gene_families:
     #break
 
 # Open the keys file again, this time in write mode
-with open('CRISPR_annotation_at_node_lookup.csv', mode='w', newline='') as keys_file:
+with open('CRISPR_annotation_at_node.csv', mode='w', newline='') as keys_file:
     # Create a CSV writer object and set the delimiter to tabs
     keys_writer = csv.writer(keys_file, delimiter=',')
 
