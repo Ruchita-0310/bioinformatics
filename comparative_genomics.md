@@ -1,5 +1,5 @@
 Before running these programs, choose cyanobacterial genomes. 
-The purpose of the project is to understand the CRISPR-Cas systems present in these genomes. 
+The purpose of the project is to perform ancestral reconstruction of programmed cell death/apoptosis in Sodalinema and Geitlerinema genomes 
 
 # 1. Metaerg 
 1. Metaerg is an important tool for metagenomic analysis because it allows researchers to accurately and comprehensively analyze the functional potential of complex microbial communities, and to generate insights into their roles in a wide range of biological processes.
