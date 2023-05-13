@@ -72,7 +72,7 @@ orthologues --input_dir /bio/data/Ruchita/faa --output_dir /bio/data/Ruchita/faa
 ```
 **Results**
 1. Detects homology and creates 1000s of clusters (.fasta files) of homologous genes
-2. It will produce 6000+ .faa files which is important for interpretation of the result. 
+2. It will produce 5000+ .faa files which is important for interpretation of the result. 
 # 5. tree_of_mags
 - The Tree of MAGs is important for several reasons:
  1. it provides a way to study the diversity of microbial communities and their evolutionary relationships. This can help researchers understand how different microbial communities are related to one another, and how they have evolved over time.
@@ -95,7 +95,7 @@ nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment &
 ```
 # 7. ClustalO multiple sequence alignment (MSA) | run it in loop 
 1. ClustalO is a software tool used for multiple sequence alignment. It is designed to align three or more nucleotide or amino acid sequences, based on their similarity. The main purpose of ClustalO is to identify regions of similarity between the sequences, and to produce a multiple sequence alignment that maximizes the overall similarity.
-2. ClustalO will use all 6000+ .faa files that are produced after running orthologues command.
+2. ClustalO will use all 5000+ .faa files that are produced after running orthologues command.
 ```
 for file in /bio/data/Ruchita/faa/orth_out/*.faa; do nohup clustalo -i "$file" -o /bio/data/Ruchita/faa/orth_out/msa_clustalo"$(basename "$file" .faa)".aln > "$(basename "$file" .faa)".log & done
 ```
