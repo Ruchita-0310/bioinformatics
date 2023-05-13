@@ -2,13 +2,13 @@ Before running these programs, choose cyanobacterial genomes.
 The purpose of the project is to understand the CRISPR-Cas systems present in these genomes. 
 
 # 1. Metaerg 
-- Metaerg is an important tool for metagenomic analysis because it allows researchers to accurately and comprehensively analyze the functional potential of complex microbial communities, and to generate insights into their roles in a wide range of biological processes.
+1. Metaerg is an important tool for metagenomic analysis because it allows researchers to accurately and comprehensively analyze the functional potential of complex microbial communities, and to generate insights into their roles in a wide range of biological processes.
 ```
 /bio/bin/python-env/bin/metaerg --contig_file /bio/data/directory/file_name --database_dir /bio/databases/metaerg 
 ```
 - **Results**
-- It will produce .xls file which can be downloaded on the computer and viewed it in excel. The file contains annotations.
-- It will also produce .faa files which will be used for all the rest of the steps!. 
+1. It will produce .xls file which can be downloaded on the computer and viewed it in excel. The file contains annotations.
+2. It will also produce .faa files which will be used for all the rest of the steps!. 
 # 2. Installing CheckM2
 1. Install [python 3.8](https://aur.archlinux.org/packages/python38):
 ```
@@ -50,8 +50,8 @@ checkm2 database –download
 checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory output_directory_name
 ```
 **Results**
-- Removed all the species with less than 90% completeness.
-- 5 genomes were removed.
+1. Removed all the species with less than 90% completeness.
+2. 5 genomes were removed.
 # 3. Make a species tree
 - make a species tree using IQ tree, FastTree, and/or Raxml
 - genes used to make the tree: Conserved Single Copy Genes
@@ -61,18 +61,18 @@ checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory out
 FastTree input_dir/file.name > fasttree_file
 ```
 # 4. Orthologous
-- The "orthologues" software is designed to identify orthologous genes between different organisms or sequences, and to cluster them into groups of orthologous gene families.
-- Make an output directory for orthologs 
+1. The "orthologues" software is designed to identify orthologous genes between different organisms or sequences, and to cluster them into groups of orthologous gene families.
+2. Make an output directory for orthologs 
 ```
 mkdir /bio/data/Ruchita/faa/output 
 ```
-- Orthologs command line (remove all the non .faa files)
+3. Orthologs command line (remove all the non .faa files)
 ```
 orthologues --input_dir /bio/data/Ruchita/faa --output_dir /bio/data/Ruchita/faa/orth_output 
 ```
 **Results**
-- Detects homology and creates 1000s of clusters (.fasta files) of homologous genes
-- It will produce 6000+ .faa files which is important for interpretation of the result. 
+1. Detects homology and creates 1000s of clusters (.fasta files) of homologous genes
+2. It will produce 6000+ .faa files which is important for interpretation of the result. 
 # 5. tree_of_mags
 - The Tree of MAGs is important for several reasons:
  1. it provides a way to study the diversity of microbial communities and their evolutionary relationships. This can help researchers understand how different microbial communities are related to one another, and how they have evolved over time.
@@ -82,14 +82,14 @@ orthologues --input_dir /bio/data/Ruchita/faa --output_dir /bio/data/Ruchita/faa
 tree_of_mags --dir /bio/data/Ruchita/cyano-faa 
 ```
 # 6. IQ Tree
-- IQ-TREE supports a wide range of evolutionary models
-- All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites
-- Fastbootstrap 1000: creats 1000 trees 
+1. IQ-TREE supports a wide range of evolutionary models
+2. All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites
+3. Fastbootstrap 1000: creats 1000 trees 
 ## 6.1. iqtree2 - species tree
-- Use `concatenated_alignment` file 
-- View the tree in different tree viewing programs (iTOL, RaXml, FigTree, Fasttree...)
-- In this case, iTOL was used. iTOL produces unrooted tree, and it can be rerooted at different branches in the tree. 3 different rerooted tree data were used to run ALE observe. 
-- `nohup` command is a Unix/Linux command that allows you to run a command or script in the background, even after you log out of the terminal session and make sure to have `&` at the end of the command/script.
+1. Use `concatenated_alignment` file 
+2. View the tree in different tree viewing programs (iTOL, RaXml, FigTree, Fasttree...)
+3. In this case, iTOL was used. iTOL produces unrooted tree, and it can be rerooted at different branches in the tree. 3 different rerooted tree data were used to run ALE observe. 
+4. `nohup` command is a Unix/Linux command that allows you to run a command or script in the background, even after you log out of the terminal session and make sure to have `&` at the end of the command/script.
 ```
 nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment &
 ```
@@ -98,8 +98,8 @@ nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment &
 nohup sh -c 'for file in /bio/data/Ruchita/faa/orthologous/msa_clustalo/*aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
 ```
 # 7. ClustalO multiple sequence alignment (MSA) | run it in loop 
-- ClustalO is a software tool used for multiple sequence alignment. It is designed to align three or more nucleotide or amino acid sequences, based on their similarity. The main purpose of ClustalO is to identify regions of similarity between the sequences, and to produce a multiple sequence alignment that maximizes the overall similarity.
-- ClustalO will use all 6000+ .faa files that are produced after running orthologues command.
+1. ClustalO is a software tool used for multiple sequence alignment. It is designed to align three or more nucleotide or amino acid sequences, based on their similarity. The main purpose of ClustalO is to identify regions of similarity between the sequences, and to produce a multiple sequence alignment that maximizes the overall similarity.
+2. ClustalO will use all 6000+ .faa files that are produced after running orthologues command.
 ```
 for file in /bio/data/Ruchita/faa/orthologous/*.faa; do nohup clustalo -i "$file" -o /bio/data/Ruchita/faa/orthologous/msa_clustalo"$(basename "$file" .faa)".aln > "$(basename "$file" .faa)".log & done
 ```
@@ -108,29 +108,29 @@ for file in /bio/data/Ruchita/faa/orthologous/*.faa; do nohup clustalo -i "$file
 2. The command will produce .aln.ufboot files. This file contains bootstrap support values for each branch of a phylogenetic tree
 # 8. Constructing Gene Family Alignments
 ## 8.1 ALE observe | run it in loop
-- ALE (Amalgamated Likelihood Estimation) Observe is a software tool used in genome assembly evaluation. It is designed to compare an assembled genome to a reference genome to determine the accuracy of the assembly.
-- The tool does this by calculating the likelihood that each read in the assembly could have come from the reference genome. A high likelihood suggests that the read is likely to be correct, while a low likelihood suggests that the read may be misassembled or contain errors.
-- ALE Observe can be used to identify regions of the assembly that are likely to be correct, as well as regions that may contain errors or require further investigation. This information can be used to improve the quality of the assembly or identify potential areas of interest for further research.
+1. ALE (Amalgamated Likelihood Estimation) Observe is a software tool used in genome assembly evaluation. It is designed to compare an assembled genome to a reference genome to determine the accuracy of the assembly.
+2. The tool does this by calculating the likelihood that each read in the assembly could have come from the reference genome. A high likelihood suggests that the read is likely to be correct, while a low likelihood suggests that the read may be misassembled or contain errors.
+3. ALE Observe can be used to identify regions of the assembly that are likely to be correct, as well as regions that may contain errors or require further investigation. This information can be used to improve the quality of the assembly or identify potential areas of interest for further research.
 ```
 nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; done' &
 ```
 - **Results**: 
 1. The command will produce .ale files
 ## 8.2. ALE_undated | run it in parallel or loop
-- ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
-- Use the .ale files produced in the previous step to run this command
+1. ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
+2. Use the .ale files produced in the previous step to run this command
 ```
 parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale  # OR
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
 ```
-- You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
+3. You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
 - **Results**:
 1. The command will produce .uml_rec and .ale.uTs files
 2. Use only .uml_rec files!
 ## 8.3. Likelihood table
 1. Move all the .ale.uml_rec files to reroot1, reroot2 and reroot3 directories respectively
-2. rename all reroot_newick2.uml_rec and reroot_newick3.uml_rec to reroot_newick
-3. copy [write_consel_file.py3](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py) 
+2. Rename all reroot_newick2.uml_rec and reroot_newick3.uml_rec to reroot_newick
+3. Copy [write_consel_file.py3](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py) 
 
 ```
 rename reroot_newick2 reroot_newick * 
@@ -144,9 +144,9 @@ consel likelihoods_table
 1. Use `au_test_out` to figure out the p-vales of the rerooted trees and use the tree that has p-value 1.00
 2. From the table, it was inferred that reroot2 was the best (further used in 10.4).
 ## 8.4. Robustness check
-- copy [DTL_ratio_analysis_ML_diff.py](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py)
-- move all the reroots (1 and 3) to a directory and run this program. Make sure the DTL code is in the same directory.
-- make: roots_to_test.txt 
+1. Copy [DTL_ratio_analysis_ML_diff.py](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py)
+2. Move all the reroots (1 and 3) to a directory and run this program. Make sure the DTL code is in the same directory.
+3. Make: roots_to_test.txt 
 ```
 nano DTL_ratio_analysis_ML_diff.py
 nano roots_to_test.txt
