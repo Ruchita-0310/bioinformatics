@@ -68,7 +68,7 @@ mkdir /bio/data/Ruchita/faa/output
 ```
 - Orthologs command line (remove all the non .faa files)
 ```
-orthologues --input_dir /bio/data/Ruchita/faa --output_dir /bio/data/Ruchita/faa/output 
+orthologues --input_dir /bio/data/Ruchita/faa --output_dir /bio/data/Ruchita/faa/orth_output 
 ```
 **Results**
 - Detects homology and creates 1000s of clusters (.fasta files) of homologous genes
