@@ -101,7 +101,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/faa/orthologous/msa_clustalo/*aln; do
 1. ClustalO is a software tool used for multiple sequence alignment. It is designed to align three or more nucleotide or amino acid sequences, based on their similarity. The main purpose of ClustalO is to identify regions of similarity between the sequences, and to produce a multiple sequence alignment that maximizes the overall similarity.
 2. ClustalO will use all 6000+ .faa files that are produced after running orthologues command.
 ```
-for file in /bio/data/Ruchita/faa/orthologous/*.faa; do nohup clustalo -i "$file" -o /bio/data/Ruchita/faa/orthologous/msa_clustalo"$(basename "$file" .faa)".aln > "$(basename "$file" .faa)".log & done
+for file in /bio/data/Ruchita/faa/orth_out/*.faa; do nohup clustalo -i "$file" -o /bio/data/Ruchita/faa/orth_out/msa_clustalo"$(basename "$file" .faa)".aln > "$(basename "$file" .faa)".log & done
 ```
 - **Results**: 
 1. 18 genes are not aligned because there is only 1 sequence
