@@ -101,7 +101,7 @@ for file in /bio/data/Ruchita/faa/orth_out/*.faa; do nohup clustalo -i "$file" -
 ```
 ## 7.1 iqtree2 – gene tree | run it in loop
 ```
-nohup sh -c 'for file in /bio/data/Ruchita/faa/orthologous/msa_clustalo/*.aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
+nohup sh -c 'for file in /bio/data/Ruchita/faa/orth_out/msa_clustalo1/*.aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
 ```
 - **Results**: 
 1. 18 genes are not aligned because there is only 1 sequence
