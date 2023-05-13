@@ -95,7 +95,7 @@ nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment &
 ```
 ## 6.2. iqtree2 – gene tree | run it in loop
 ```
-nohup sh -c 'for file in /bio/data/Ruchita/faa/orthologous/msa_clustalo/*aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
+nohup sh -c 'for file in /bio/data/Ruchita/faa/orthologous/msa_clustalo/*.aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
 ```
 # 7. ClustalO multiple sequence alignment (MSA) | run it in loop 
 1. ClustalO is a software tool used for multiple sequence alignment. It is designed to align three or more nucleotide or amino acid sequences, based on their similarity. The main purpose of ClustalO is to identify regions of similarity between the sequences, and to produce a multiple sequence alignment that maximizes the overall similarity.
