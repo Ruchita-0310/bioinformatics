@@ -75,12 +75,14 @@ orthologues --input_dir /bio/data/Ruchita/faa --output_dir /bio/data/Ruchita/faa
 2. It will produce 5000+ .faa files which is important for interpretation of the result. 
 # 5. tree_of_mags
 - The Tree of MAGs is important for several reasons:
- 1. it provides a way to study the diversity of microbial communities and their evolutionary relationships. This can help researchers understand how different microbial communities are related to one another, and how they have evolved over time.
- 2. the Tree of MAGs can be used to identify new microbial lineages that have not been previously described. By comparing MAGs from different samples, researchers can identify novel clades of microorganisms that may have important ecological or biotechnological implications.
- 3. the Tree of MAGs can be used to study the functional capabilities of microbial communities. By examining the presence or absence of specific genes or pathways across the phylogenetic tree, researchers can infer the functional capabilities of different microbial clades. This can help identify novel enzymes or pathways that may have biotechnological applications, such as in the production of biofuels or other bioproducts.
+ 1. It provides a way to study the diversity of microbial communities and their evolutionary relationships. This can help researchers understand how different microbial communities are related to one another, and how they have evolved over time.
+ 2. Tree of MAGs can be used to identify new microbial lineages that have not been previously described. By comparing MAGs from different samples, researchers can identify novel clades of microorganisms that may have important ecological or biotechnological implications.
+ 3. Tree of MAGs can be used to study the functional capabilities of microbial communities. By examining the presence or absence of specific genes or pathways across the phylogenetic tree, researchers can infer the functional capabilities of different microbial clades. This can help identify novel enzymes or pathways that may have biotechnological applications, such as in the production of biofuels or other bioproducts.
 ```
 tree_of_mags --dir /bio/data/Ruchita/cyano-faa 
 ```
+**Results**
+This command will produce `concatenated_alignment` which is used on future analysis.
 # 6. IQ Tree
 1. IQ-TREE supports a wide range of evolutionary models
 2. All common substitution models for DNA, protein, codon, binary and morphological data with rate heterogeneity among sites
@@ -103,7 +105,7 @@ for file in /bio/data/Ruchita/faa/orth_out/*.faa; do nohup clustalo -i "$file" -
 ```
 nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/*.aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
 ```
-- **Results**: 
+**Results**: 
 1. 18 genes are not aligned because there is only 1 sequence
 2. iqtree command will produce .aln.ufboot files. This file contains bootstrap support values for each branch of a phylogenetic tree
 # 8. Constructing Gene Family Alignments
@@ -114,7 +116,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/*.aln; do iqtree2 -s "$
 ```
 nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; done' &
 ```
-- **Results**: 
+**Results**: 
 1. The command will produce .ale files
 ## 8.2. ALE_undated | run it in parallel or loop
 1. ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
@@ -125,7 +127,7 @@ parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
 ```
 3. You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
-- **Results**:
+**Results**:
 1. The command will produce .uml_rec and .ale.uTs files
 2. Use only .uml_rec files!
 ## 8.3. Likelihood table
@@ -141,7 +143,7 @@ makermt likelihoods_table.mt
 consel likelihoods_table
 /bio/bin/consel/bin/catpv likelihoods_table > au_test_out 
 ```
-- **Results**: 
+**Results**: 
 1. Use `au_test_out` to figure out the p-vales of the rerooted trees and use the tree that has p-value 1.00
 2. From the table, it was inferred that reroot2 was the best (further used in 10.4).
 ## 8.4. Robustness check
@@ -224,7 +226,7 @@ python Ancestral_reconstruction_copy_number.py 0.5 16 30
 ```
 python ancestral_modified.py 0.5 16 30
 ```
-- **Results**: 
+**Results**: 
 1. `Total_copies_at_node` and `Gene_families_at_each_node` directories will contain .csv files. Zip the folders, download and view.
 2. `Total_copies_at_node`: This directory contains the "Sum_of_copies_at_each_node.csv" and "Copies_at_each_node.csv" files. You can use this directory to browse the total number of gene family copies at each node. `Copies_at_each_node.csv`: This file contains a list of all the gene families, along with the node and the number of gene family copies at that node. You can use this file to get a general sense of the distribution of gene family copies across the tree.
 3. `Gene_families_at_each_node`: This directory contains all the "Node_X_genes_present.csv" files. You can use this directory to browse the gene families present at each node. Node_X_genes_present.csv: These files contain a list of gene families that meet the cutoff criteria at a specific node X. For example, if the script finds that node 5 has 10 gene families that meet the cutoff criteria, it will create a file called "Node_5_genes_present.csv" that contains a list of those gene families. You can use these files to get a more detailed view of the gene families present at each node.
