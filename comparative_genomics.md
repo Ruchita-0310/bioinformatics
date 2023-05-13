@@ -6,7 +6,7 @@ The purpose of the project is to perform ancestral reconstruction of programmed 
 ```
 /bio/bin/python-env/bin/metaerg --contig_file /bio/data/directory/file_name --database_dir /bio/databases/metaerg 
 ```
-- **Results**
+**Results**
 1. It will produce .xls file which can be downloaded on the computer and viewed it in excel. The file contains annotations.
 2. It will also produce .faa files which will be used for all the rest of the steps!. 
 # 2. Installing CheckM2
