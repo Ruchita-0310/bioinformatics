@@ -53,8 +53,8 @@ checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory out
 1. Removed all the species with less than 90% completeness.
 2. 5 genomes were removed.
 # 3. Make a species tree
-- make a species tree using IQ tree, FastTree, and/or Raxml
-- genes used to make the tree: Conserved Single Copy Genes
+- Make a species tree using IQ tree, FastTree, and/or Raxml
+- Genes used to make the tree: Conserved Single Copy Genes
 ## 3.1. FastTree
 - FastTree is a bioinformatics software tool that is commonly used for the phylogenetic analysis of DNA and protein sequences. Its main function is to construct phylogenetic trees quickly and accurately from a large number of sequences.
 ```
