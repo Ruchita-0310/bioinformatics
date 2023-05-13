@@ -7,7 +7,8 @@ The purpose of the project is to understand the CRISPR-Cas systems present in th
 /bio/bin/python-env/bin/metaerg --contig_file /bio/data/directory/file_name --database_dir /bio/databases/metaerg 
 ```
 - **Results**
-- it will produce .xls file which can be downloaded on the computer and viewed it in excel. The file contains annotations.
+- It will produce .xls file which can be downloaded on the computer and viewed it in excel. The file contains annotations.
+- It will also produce .faa files which will be used for all the rest of the steps!. 
 # 2. Installing CheckM2
 1. Install [python 3.8](https://aur.archlinux.org/packages/python38):
 ```
@@ -63,11 +64,11 @@ FastTree input_dir/file.name > fasttree_file
 - The "orthologues" software is designed to identify orthologous genes between different organisms or sequences, and to cluster them into groups of orthologous gene families.
 - Make an output directory for orthologs 
 ```
-mkdir /bio/data/Ruchita/phormidium/output 
+mkdir /bio/data/Ruchita/faa/output 
 ```
 - Orthologs command line (remove all the non .faa files)
 ```
-orthologues --input_dir /bio/data/Ruchita/phormidium --output_dir /bio/data/Ruchita/phormidium/output 
+orthologues --input_dir /bio/data/Ruchita/faa --output_dir /bio/data/Ruchita/faa/output 
 ```
 **Results**
 - Detects homology and creates 1000s of clusters (.fasta files) of homologous genes
