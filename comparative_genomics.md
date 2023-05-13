@@ -241,3 +241,4 @@ cat Baaleninemasimplex.faa cyanoSBC.faa cyanoSID2.faa gBBD.faa GeitlerinemaP-110
 blastp -db concatf.faa -query cds.faa -out blastx.out -outfmt 6
 ```
 4. Blastp will produce a table with query ID,	subject ID,	% identity,	alignment length,	mismatches,	gap opening,	query start,	query end,	subject start,	subject end,	e-value, and	bit score.
+5. Copy [CRISPR_mapping_table.py](https://github.com/Ruchita-0310/bioinformatics/blob/main/CRISPR_mapping_table.py) in order to get the fasta files in which the subject IDs are stored. This will filter out only CRISPR annotations!
