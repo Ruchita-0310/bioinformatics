@@ -1,15 +1,6 @@
 Before running these programs, choose cyanobacterial genomes. 
 The purpose of the project is to perform ancestral reconstruction of programmed cell death/apoptosis in Sodalinema and Geitlerinema genomes 
-
-# 1. Metaerg 
-1. Metaerg is an important tool for metagenomic analysis because it allows researchers to accurately and comprehensively analyze the functional potential of complex microbial communities, and to generate insights into their roles in a wide range of biological processes.
-```
-/bio/bin/python-env/bin/metaerg --contig_file /bio/data/directory/file_name --database_dir /bio/databases/metaerg 
-```
-**Results**
-1. It will produce .xls file which can be downloaded on the computer and viewed it in excel. The file contains annotations.
-2. It will also produce .faa files which will be used for all the rest of the steps!. 
-# 2. Installing CheckM2
+# 1. Installing CheckM2
 1. Install [python 3.8](https://aur.archlinux.org/packages/python38):
 ```
 cd /bio/bin
@@ -52,6 +43,14 @@ checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory out
 **Results**
 1. Removed all the species with less than 90% completeness.
 2. 5 genomes were removed.
+# 2. Metaerg 
+1. Metaerg is an important tool for metagenomic analysis because it allows researchers to accurately and comprehensively analyze the functional potential of complex microbial communities, and to generate insights into their roles in a wide range of biological processes.
+```
+/bio/bin/python-env/bin/metaerg --contig_file /bio/data/directory/file_name --database_dir /bio/databases/metaerg 
+```
+**Results**
+1. It will produce .xls file which can be downloaded on the computer and viewed it in excel. The file contains annotations.
+2. It will also produce .faa files which will be used for all the rest of the steps!. 
 # 3. Make a species tree
 - Make a species tree using IQ tree, FastTree, and/or Raxml
 - Genes used to make the tree: Conserved Single Copy Genes
