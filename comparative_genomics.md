@@ -108,7 +108,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/*.aln; do iqtree2 -s "$
 **Results**: 
 1. 18 genes are not aligned because there is only 1 sequence
 2. iqtree command will produce .aln.ufboot files. This file contains bootstrap support values for each branch of a phylogenetic tree
-# 8. Constructing Gene Family Alignments
+# 8. Infer Bootstrap Distribution of Trees for Each Gene Family :
 ## 8.1 ALE observe | run it in loop
 1. ALE (Amalgamated Likelihood Estimation) Observe is a software tool used in genome assembly evaluation. It is designed to compare an assembled genome to a reference genome to determine the accuracy of the assembly.
 2. The tool does this by calculating the likelihood that each read in the assembly could have come from the reference genome. A high likelihood suggests that the read is likely to be correct, while a low likelihood suggests that the read may be misassembled or contain errors.
@@ -118,7 +118,8 @@ nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; 
 ```
 **Results**: 
 1. The command will produce .ale files
-## 8.2. ALE_undated | run it in parallel or loop
+# 8. Computing Reconciled Gene Trees for Each Candidate Rooted Species Tree
+## 8.1. ALE_undated | run it in parallel or loop
 1. ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
 2. Use the .ale files produced in the previous step to run this command
 3. Use iTOL to reroot the unrooted trees. In this case, the tree was rerooted at 3 different places. Hence 3 different names as `reroot_newick1`, `reroot_newick2`, and `reroot_newick3`. 
@@ -130,7 +131,8 @@ nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" :::
 **Results**:
 1. The command will produce .uml_rec and .ale.uTs files
 2. Use only .uml_rec files!
-## 8.3. Likelihood table
+# 9. Comparing Support for Candidate Root Positions
+## 9.1. Likelihood table
 1. Move all the .ale.uml_rec files to reroot1, reroot2 and reroot3 directories respectively
 2. Rename all reroot_newick2.uml_rec and reroot_newick3.uml_rec to reroot_newick
 3. Copy [write_consel_file.py3](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py) 
@@ -145,8 +147,9 @@ consel likelihoods_table
 ```
 **Results**: 
 1. Use `au_test_out` to figure out the p-vales of the rerooted trees and use the tree that has p-value 1.00
-2. From the table, it was inferred that reroot2 was the best (further used in 10.4).
-## 8.4. Robustness check
+2. From the table, it was inferred that reroot2 was the best
+# 10. Evaluating the Nature of the Root Signal 
+## 10. 1. Robustness Checks
 1. Copy [DTL_ratio_analysis_ML_diff.py](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py)
 2. Move all the reroots (1 and 3) to a directory and run this program. Make sure the DTL code is in the same directory.
 3. Make: roots_to_test.txt 
@@ -198,8 +201,8 @@ python DTL_ratio_analysis_ML_diff.py reroot2 LS # use the reroot tree that has a
 zip ls.zip LS_ratio_results/*
 ```
 - Downloaded the zipped file on the computer to view
-## 8.5. Gene content evolution on the most likely rooted species tree | run it in "reroot2" directory
-### 8.5.1. Branchwise events
+# 11. Gene content evolution on the most likely rooted species tree | run it in "reroot2" directory
+## 11.1. Branchwise events
 - Once the most likely root has been identified, this technique allows users to quantify the relative contributions of duplication, transfer, loss, and origination in the gene content evolution.
 - Copy [branchwise_number_of_events.py](https://github.com/ak-andromeda/ALE_methods/blob/main/branchwise_number_of_events.py)
 ```
@@ -208,7 +211,7 @@ python branchwise_number_of_events.py > dtloc.tsv
 - **Results**:
 1. Now open .tsv file that contains a table (use 16 and 30 as internal nodes). 
 2. Internal nodes play a critical role in gene content evolution analyses as they represent the points in the phylogenetic tree where gene gain and loss events are inferred to have occurred, and provide insights into the evolutionary history of the gene.
-### 8.5.2. Ancestral reconstruction
+## 11.2. Ancestral reconstruction
 - Copy [Ancestral_reconstruction_copy_number.py](https://github.com/ak-andromeda/ALE_methods/blob/main/Ancestral_reconstruction_copy_number.py)
 ```
 nano Ancestral_reconstruction_copy_number.py # change .ml_rec to .uml_rec
@@ -231,7 +234,7 @@ python ancestral_modified.py 0.5 16 30
 2. `Total_copies_at_node`: This directory contains the "Sum_of_copies_at_each_node.csv" and "Copies_at_each_node.csv" files. You can use this directory to browse the total number of gene family copies at each node. `Copies_at_each_node.csv`: This file contains a list of all the gene families, along with the node and the number of gene family copies at that node. You can use this file to get a general sense of the distribution of gene family copies across the tree.
 3. `Gene_families_at_each_node`: This directory contains all the "Node_X_genes_present.csv" files. You can use this directory to browse the gene families present at each node. Node_X_genes_present.csv: These files contain a list of gene families that meet the cutoff criteria at a specific node X. For example, if the script finds that node 5 has 10 gene families that meet the cutoff criteria, it will create a file called "Node_5_genes_present.csv" that contains a list of those gene families. You can use these files to get a more detailed view of the gene families present at each node.
 4. Results of "modified ancestral reconstruction" are in `Total_copies_at_node` directory. `Copies_at_each_node.csv` and `Sum_of_DTLSC_at_each_node.csv` files have the results.
-### 8.5.3 Annotating results 
+## 11.3 Annotating results 
 1. Use Jackie's manuscript (24365 - csm6, 24366 - csm6gr7, 24367 - csx19, 24368 - csm6gr7, 24369 - csm6gr7, 24370 - Cas10, 13454 - putative antitoxin, and 13455 - putative toxin)
 2. `cds.faa` files contains only 8 sequences mentioned above
 3. Make a blast database: 
