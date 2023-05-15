@@ -108,7 +108,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/*.aln; do iqtree2 -s "$
 **Results**: 
 1. 18 genes are not aligned because there is only 1 sequence
 2. iqtree command will produce .aln.ufboot files. This file contains bootstrap support values for each branch of a phylogenetic tree
-# 8. Infer Bootstrap Distribution of Trees for Each Gene Family :
+# 8. Infer Bootstrap Distribution of Trees for Each Gene Family
 ## 8.1 ALE observe | run it in loop
 1. ALE (Amalgamated Likelihood Estimation) Observe is a software tool used in genome assembly evaluation. It is designed to compare an assembled genome to a reference genome to determine the accuracy of the assembly.
 2. The tool does this by calculating the likelihood that each read in the assembly could have come from the reference genome. A high likelihood suggests that the read is likely to be correct, while a low likelihood suggests that the read may be misassembled or contain errors.
