@@ -52,10 +52,10 @@ checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory out
 1. It will produce .xls file which can be downloaded on the computer and viewed it in excel. The file contains annotations.
 2. It will also produce .faa files which will be used for all the rest of the steps!. 
 # 3. Make a species tree
-- Make a species tree using IQ tree, FastTree, and/or Raxml
-- Genes used to make the tree: Conserved Single Copy Genes
+1. Make a species tree using IQ tree, FastTree, and/or Raxml
+2. Genes used to make the tree: Conserved Single Copy Genes
 ## 3.1. FastTree
-- FastTree is a bioinformatics software tool that is commonly used for the phylogenetic analysis of DNA and protein sequences. Its main function is to construct phylogenetic trees quickly and accurately from a large number of sequences.
+1. FastTree is a bioinformatics software tool that is commonly used for the phylogenetic analysis of DNA and protein sequences. Its main function is to construct phylogenetic trees quickly and accurately from a large number of sequences.
 ```
 FastTree input_dir/file.name > fasttree_file
 ```
