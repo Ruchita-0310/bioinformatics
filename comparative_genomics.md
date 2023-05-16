@@ -128,9 +128,9 @@ parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
 ```
 3. You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to runs. 
-**Results**:
-1. The command will produce .uml_rec and .ale.uTs files
-2. Use only .uml_rec files!
+- **Results**:
+5. The command will produce .uml_rec and .ale.uTs files
+6. Use only .uml_rec files!
 # 10. Comparing Support for Candidate Root Positions
 ## 10.1. Likelihood table
 1. Move all the .ale.uml_rec files to reroot1, reroot2 and reroot3 directories respectively
