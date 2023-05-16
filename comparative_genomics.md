@@ -125,7 +125,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/ale_o/*.ufboot; do ALEo
 3. Use iTOL to reroot the unrooted trees. In this case, the tree was rerooted at 3 different places. Hence 3 different names as `reroot1`, `reroot2`, and `reroot3`. (make sure to delete .faa.hmm.results)
 ```
 parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale  # OR
-nohup parallel -j 1500 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
+nohup parallel -j 1500 "ALEml_undated reroot1.txt {} separators='|'" ::: *.ale & (do the same for reroot2 and reroot3)
 ```
 3. You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to runs. 
 - **Results**:
