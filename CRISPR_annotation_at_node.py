@@ -24,7 +24,7 @@ for gene_family in gene_families:
     #print(gene_family)
     if os.path.exists('ortho_output/'+gene_family[2].split('.txt_')[1].split(".aln")[0] + '.faa'):
         # Open the CSV file containing the data to be looked up in read mode
-        with open('ortho_output/'+gene_family[2].split('.txt_')[1].split(".aln")[0] + '.faa', mode='r') as data_file:
+        with open('orth_out/'+gene_family[2].split('.txt_')[1].split(".aln")[0] + '.faa', mode='r') as data_file:
             # Create a CSV reader object and set the delimiter to tabs
             data_reader = data_file.read()
             if 'CRISPR' not in data_reader and 'toxin' not in data_reader:
@@ -36,7 +36,7 @@ for gene_family in gene_families:
             for sequence in sequences:
                 if '#' not in sequence and sequence != "" and '[Paralogue]' not in sequence:
                     #print(sequence)
-                    #sequence = 'GeitlerinemaP-1104|5166 [Orthologue] GeitlerinemaP-1104|WP_170189656.1 helicase [Geitlerinema sp. P-1104]'
+                    #sequence = 'Baaleninemasimplex|1829 [Orthologue] Baaleninemasimplex|Baaleninemasimplex.KB235958.1.04660 ATP-binding protein (Bacteria; Cyanobacteria; Cyanobacteriia; Cyanobacteriales; Geitlerinemaceae; Geitlerinema; Geitlerinema)'
                     first = sequence.split('[')
                     x = first[len(first)-1].split(']')[0]
                     #print(x)
