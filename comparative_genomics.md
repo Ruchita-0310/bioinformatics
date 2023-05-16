@@ -113,7 +113,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/*.aln; do iqtree2 -s "$
 2. The tool does this by calculating the likelihood that each read in the assembly could have come from the reference genome. A high likelihood suggests that the read is likely to be correct, while a low likelihood suggests that the read may be misassembled or contain errors.
 3. ALE Observe can be used to identify regions of the assembly that are likely to be correct, as well as regions that may contain errors or require further investigation. This information can be used to improve the quality of the assembly or identify potential areas of interest for further research.
 ```
-nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/ale_o /*.ufboot; do ALEobserve $file; done' &
+nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/ale_o/*.ufboot; do ALEobserve $file; done' &
 ```
 **Results**: 
 1. The command will produce .ale files
