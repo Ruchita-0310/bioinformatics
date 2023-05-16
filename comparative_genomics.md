@@ -78,7 +78,7 @@ orthologues --input_dir /bio/data/Ruchita/faa --output_dir /bio/data/Ruchita/faa
  2. Tree of MAGs can be used to identify new microbial lineages that have not been previously described. By comparing MAGs from different samples, researchers can identify novel clades of microorganisms that may have important ecological or biotechnological implications.
  3. Tree of MAGs can be used to study the functional capabilities of microbial communities. By examining the presence or absence of specific genes or pathways across the phylogenetic tree, researchers can infer the functional capabilities of different microbial clades. This can help identify novel enzymes or pathways that may have biotechnological applications, such as in the production of biofuels or other bioproducts.
 ```
-tree_of_mags --dir /bio/data/Ruchita/cyano-faa 
+tree_of_mags --dir /bio/data/Ruchita/faa 
 ```
 **Results**
 This command will produce `concatenated_alignment` which is used on future analysis.
@@ -113,7 +113,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/*.aln; do iqtree2 -s "$
 2. The tool does this by calculating the likelihood that each read in the assembly could have come from the reference genome. A high likelihood suggests that the read is likely to be correct, while a low likelihood suggests that the read may be misassembled or contain errors.
 3. ALE Observe can be used to identify regions of the assembly that are likely to be correct, as well as regions that may contain errors or require further investigation. This information can be used to improve the quality of the assembly or identify potential areas of interest for further research.
 ```
-nohup sh -c 'for file in /bio/data/Ruchita/ale1 /*.ufboot; do ALEobserve $file; done' &
+nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/ale_o /*.ufboot; do ALEobserve $file; done' &
 ```
 **Results**: 
 1. The command will produce .ale files
