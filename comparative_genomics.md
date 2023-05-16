@@ -112,6 +112,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/*.aln; do iqtree2 -s "$
 1. ALE (Amalgamated Likelihood Estimation) Observe is a software tool used in genome assembly evaluation. It is designed to compare an assembled genome to a reference genome to determine the accuracy of the assembly.
 2. The tool does this by calculating the likelihood that each read in the assembly could have come from the reference genome. A high likelihood suggests that the read is likely to be correct, while a low likelihood suggests that the read may be misassembled or contain errors.
 3. ALE Observe can be used to identify regions of the assembly that are likely to be correct, as well as regions that may contain errors or require further investigation. This information can be used to improve the quality of the assembly or identify potential areas of interest for further research.
+4. You can also slipt all the .ufboot files into 9 different directories to speed up the process
 ```
 nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/ale_o/*.ufboot; do ALEobserve $file; done' &
 ```
@@ -121,7 +122,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/ale_o/*.ufboot; do ALEo
 ## 9.1. ALE_undated | run it in parallel or loop
 1. ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
 2. Use the .ale files produced in the previous step to run this command
-3. Use iTOL to reroot the unrooted trees. In this case, the tree was rerooted at 3 different places. Hence 3 different names as `reroot_newick1`, `reroot_newick2`, and `reroot_newick3`. 
+3. Use iTOL to reroot the unrooted trees. In this case, the tree was rerooted at 3 different places. Hence 3 different names as `reroot1`, `reroot2`, and `reroot3`. (make sure to delete .faa.hmm.results)
 ```
 parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale  # OR
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
