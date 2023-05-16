@@ -89,11 +89,12 @@ This command will produce `concatenated_alignment` which is used on future analy
 ## 6.1. iqtree2 - species tree
 1. Use `concatenated_alignment` file 
 2. View the tree in different tree viewing programs (iTOL, RaXml, FigTree, Fasttree...)
-3. In this case, iTOL was used. iTOL produces unrooted tree, and it can be rerooted at different branches in the tree. 3 different rerooted tree data were used to run ALE observe. 
-4. `nohup` command is a Unix/Linux command that allows you to run a command or script in the background, even after you log out of the terminal session and make sure to have `&` at the end of the command/script.
+3. `nohup` command is a Unix/Linux command that allows you to run a command or script in the background, even after you log out of the terminal session and make sure to have `&` at the end of the command/script.
 ```
 nohup iqtree2 -s /bio/data/Ruchita/faa/alignments/concatenated_alignment &
+fasttree /bio/data/Ruchita/faa/alignments/concatenated_alignment > fasttree_file
 ```
+4. Use the `fasttree_file` and view it on iTOL. iTOL produces unrooted tree, and it can be rerooted at different branches in the tree. 3 different rerooted tree data were used to run ALE observe. 
 # 7. ClustalO multiple sequence alignment (MSA) | run it in loop 
 1. ClustalO is a software tool used for multiple sequence alignment. It is designed to align three or more nucleotide or amino acid sequences, based on their similarity. The main purpose of ClustalO is to identify regions of similarity between the sequences, and to produce a multiple sequence alignment that maximizes the overall similarity.
 2. ClustalO will use all 5000+ .faa files that are produced after running orthologues command.
@@ -105,8 +106,7 @@ for file in /bio/data/Ruchita/faa/orth_out/*.faa; do nohup clustalo -i "$file" -
 nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/*.aln; do iqtree2 -s "$file" -m MFP -madd LG+C20,LG+C60 -B 10000 -wbtl ; done' &
 ```
 **Results**: 
-1. 18 genes are not aligned because there is only 1 sequence
-2. iqtree command will produce .aln.ufboot files. This file contains bootstrap support values for each branch of a phylogenetic tree
+1. iqtree command will produce .aln.ufboot files. This file contains bootstrap support values for each branch of a phylogenetic tree
 # 8. Infer Bootstrap Distribution of Trees for Each Gene Family
 ## 8.1 ALE observe | run it in loop
 1. ALE (Amalgamated Likelihood Estimation) Observe is a software tool used in genome assembly evaluation. It is designed to compare an assembled genome to a reference genome to determine the accuracy of the assembly.
