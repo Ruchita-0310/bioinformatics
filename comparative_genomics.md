@@ -133,7 +133,7 @@ nohup parallel -j 1500 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *
 6. Use only .uml_rec files!
 # 10. Comparing Support for Candidate Root Positions
 ## 10.1. Likelihood table
-1. Move all the .ale.uml_rec files to reroot1, reroot2 and reroot3 directories respectively
+1. Move all the .ale.uml_rec files to aleml_1, aleml_2 and aleml_3 directories respectively
 2. Rename all reroot_newick2.uml_rec and reroot_newick3.uml_rec to reroot_newick
 3. Copy [write_consel_file.py3](https://github.com/ak-andromeda/ALE_methods/blob/main/write_consel_file_p3.py) 
 
