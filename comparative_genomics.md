@@ -127,7 +127,7 @@ nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/ale_o/*.ufboot; do ALEo
 parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale  # OR
 nohup parallel -j 1500 “ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale &
 ```
-3. You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to run
+3. You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to runs. 
 **Results**:
 1. The command will produce .uml_rec and .ale.uTs files
 2. Use only .uml_rec files!
