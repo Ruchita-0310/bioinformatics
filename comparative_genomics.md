@@ -46,7 +46,7 @@ checkm2 predict -t 30 -x fna --input ./directory_name.fna --output-directory out
 # 2. Metaerg 
 1. Metaerg is an important tool for metagenomic analysis because it allows researchers to accurately and comprehensively analyze the functional potential of complex microbial communities, and to generate insights into their roles in a wide range of biological processes.
 ```
-/bio/bin/python-env/bin/metaerg --contig_file /bio/data/directory/file_name --database_dir /bio/databases/metaerg 
+nohup metaerg --contig_file /bio/data/Ruchita/fna --database_dir /bio/databases/metaerg --file_extension .fna --checkm_dir /bio/data/Ruchita/checkm2-output2 &
 ```
 **Results**
 1. It will produce .xls file which can be downloaded on the computer and viewed it in excel. The file contains annotations.
