@@ -13,49 +13,43 @@ with open('Copies_at_each_node.csv', mode='r') as keys_file:
     for row in keys_reader:
         if row[2] != "Gene_family":
             gene_families.append(row)
-        else:
-            print(row)
-            #	Node	Gene_family	Duplications	Transfers	Losses	Originations	Copies	 
-
+            
 lookup_data = []
 
 for gene_family in gene_families:
     lookup_data.append(gene_family)
-    #print(gene_family)
-    if os.path.exists('ortho_output/'+gene_family[2].split('.txt_')[1].split(".aln")[0] + '.faa'):
-        # Open the CSV file containing the data to be looked up in read mode
-        with open('orth_out/'+gene_family[2].split('.txt_')[1].split(".aln")[0] + '.faa', mode='r') as data_file:
-            # Create a CSV reader object and set the delimiter to tabs
+    # Open the CSV file containing the data to be looked up in read mode
+    if os.path.exists('orth_out/'+gene_family[2].split('clustalo')[1].split(".aln")[0] + '.faa'):
+        with open('orth_out/'+gene_family[2].split('clustalo')[1].split(".aln")[0] + '.faa', mode='r') as data_file:
             data_reader = data_file.read()
+
+            # Filter out annotations that don't contain 'CRISPR' and 'toxin'.
             if 'CRISPR' not in data_reader and 'toxin' not in data_reader:
                 lookup_data.remove(gene_family)
                 continue
             sequences = data_reader.split('>')
 
-            # Iterate over each row in the data file
+            # Iterate over each sequence.
             for sequence in sequences:
+                # Filter out 'Paralogue' sequences.
                 if '#' not in sequence and sequence != "" and '[Paralogue]' not in sequence:
-                    #print(sequence)
-                    #sequence = 'Baaleninemasimplex|1829 [Orthologue] Baaleninemasimplex|Baaleninemasimplex.KB235958.1.04660 ATP-binding protein (Bacteria; Cyanobacteria; Cyanobacteriia; Cyanobacteriales; Geitlerinemaceae; Geitlerinema; Geitlerinema)'
-                    first = sequence.split('[')
-                    x = first[len(first)-1].split(']')[0]
-                    #print(x)
-                    y = sequence.split('[' + x)[0].split('.')[1]
-                    #print(y)
-                    y = y.split(' ', 1)[1]
-                    #print(y)
-                    a = ['', '', '', '', '', '', '', '', x, y]
-                    lookup_data.append(a)
-                    #print(a)
-                if '#' in sequence:
-                    x = sequence.split('|')[0]
-                    a = ['', '', '', '', '', '', '', '', x, '']
-                    lookup_data.append(a)
-                    #print(a)
-    #print(lookup_data)
-    #break
+                    # 'GeitlerinemaP-1104|3716 [Orthologue] GeitlerinemaP-1104|GeitlerinemaP-1104.NZ_SMDP01000009.1.00478 type II toxin-antitoxin system VapC family toxin (Bacteria; Cyanobacteria; Cyanobacteriia; Cyanobacteriales; Geitlerinemaceae; Phormidium_A; Phormidium_A)'
+                    first = sequence.split(';')
+                    bacteria = first[len(first)-1].split(')')[0]
+                    annotation = sequence.split('(')[0].split('|')[2]
+                    if len(annotation.split(' ')) == 1:
+                        continue
+                    annotation = annotation.split(' ', 1)[1]
+                    annotation = ['', '', '', '', '', '', '', '', bacteria, annotation]
+                    lookup_data.append(annotation)
 
-# Open the keys file again, this time in write mode
+                # if annotation does not exists, only print bacteria.
+                if '#' in sequence:
+                    bacteria = sequence.split('|')[0]
+                    annotation = ['', '', '', '', '', '', '', '', bacteria, '']
+                    lookup_data.append(annotation)
+
+# Create a new file in write mode
 with open('CRISPR_annotation_at_node.csv', mode='w', newline='') as keys_file:
     # Create a CSV writer object and set the delimiter to tabs
     keys_writer = csv.writer(keys_file, delimiter=',')
