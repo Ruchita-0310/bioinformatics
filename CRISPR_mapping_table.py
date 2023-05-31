@@ -9,7 +9,7 @@ with open('blastp_results.csv', mode='r') as keys_file:
 
     # Iterate over each row in the keys file and add the keys to the list
     for row in keys_reader:
-        if 'subject ID' not in row[1] and row[1] not in keys:
+        if 'subject ID' not in row[1] and row[1] not in keys and row[2] == '100':
             keys.append(row[1])
             all_rows[row[1]] = row
 
@@ -58,3 +58,5 @@ with open('CRISPR_mapping_table.csv', mode='w', newline='') as keys_file:
             value.append("")
             value.append("")
         keys_writer.writerow(value)
+
+        
