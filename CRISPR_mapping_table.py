@@ -40,7 +40,7 @@ for file in os.scandir('orth_out'):
 
 # Create a new file in write mode
 with open('CRISPR_mapping_table.csv', mode='w', newline='') as keys_file:
-    # Create a CSV writer object and set the delimiter to tabs
+    # Create a CSV writer object and set the delimiter to comma
     keys_writer = csv.writer(keys_file, delimiter=',')
 
     # Add column names
@@ -59,4 +59,26 @@ with open('CRISPR_mapping_table.csv', mode='w', newline='') as keys_file:
             value.append("")
         keys_writer.writerow(value)
 
-        
+nodes = {}
+with open('CRISPR_annotation_at_node.csv', mode='r') as node_file:
+    # Create a CSV reader object and set the delimiter to tabs
+    node_reader = csv.reader(node_file, delimiter=',')
+    file_name = ""
+    # Iterate over each row in the keys file and add the keys to the list
+    for row in node_reader:
+        if row[2] != '' and row[2] != 'Gene_family':
+            # reroot_newick.txt_msa_clustalo4088.aln.ufboot.ale.uml_rec
+            file_name = row[2].split('clustalo')[1].split(".aln")[0]
+            nodes[file_name + '.faa'] = [row]
+        elif file_name != '':
+            nodes[file_name + '.faa'].append(row)
+
+with open('CRISPR_mapping_at_each_node.csv', mode='w', newline='') as match_file:
+    keys_writer = csv.writer(match_file, delimiter=',')
+
+    value = ['', 'Node', 'Gene_family', 'Duplications', 'Transfers', 'Losses', 'Originations', 'Copies', 'Probable bacteria', 'Probable protein annotation']
+    keys_writer.writerow(value)
+
+    for key in keys:
+        if key in file_names.keys() and file_names[key] in nodes.keys():
+            keys_writer.writerows(nodes[file_names[key]])
