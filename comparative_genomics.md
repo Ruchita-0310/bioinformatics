@@ -128,7 +128,7 @@ parallel -j 100000 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale
 nohup parallel -j 1500 "ALEml_undated reroot_newick.txt {} separators='|'" ::: *.ale & (do the same for reroot_newick2 and reroot_newick3)
 ```
 3. You can adjust the number of parallel jobs by adding the "-j" flag followed by the number of parallel jobs you want to runs. 
-- **Results**:
+**Results**:
 5. The command will produce .uml_rec and .ale.uTs files
 6. Use only .uml_rec files!
 # 10. Comparing Support for Candidate Root Positions
@@ -193,7 +193,7 @@ pyuhuli
 ```
 python DTL_ratio_analysis_ML_diff.py reroot2 LS # use the reroot tree that has a p-value of 1.00 (in this case it is reroot2)
 ```
-- **Results**:
+**Results**:
 1. `LS_ratio_results` directory has the results
 2. Produced multiple .png files that contain graphs and .csv files that has tables.
 3. Understanding the graph: the maximum likelihood "root" is the dotted line at 0. Use this root for further analysis. 
@@ -208,7 +208,7 @@ zip ls.zip LS_ratio_results/*
 ```
 python branchwise_number_of_events.py > dtloc.tsv 
 ```
-- **Results**:
+**Results**:
 1. Now open .tsv file that contains a table (use 16 and 30 as internal nodes). 
 2. Internal nodes play a critical role in gene content evolution analyses as they represent the points in the phylogenetic tree where gene gain and loss events are inferred to have occurred, and provide insights into the evolutionary history of the gene.
 ## 12.2. Ancestral reconstruction
