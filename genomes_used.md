@@ -2,7 +2,7 @@ NCBI Organism Name | GTDB organism name | . Faa files names |
 |----------|---------- |---------- |
 | Phormidium alkaliphilum | - | pha.faa |
 | Microcoleus PCC 7113 | Allocoleopsis franciscana PCC 7113 | MicrocoleusPCC 7113.faa |
-| Phormidium yuhuli | Sodalinema yuhuli | yuhuli.faa |
+| Phormidium yuhuli | Sodalinema yuhuli | pyuhuli.faa |
 | Geitlerinema sp PCC 9228 | PCC-9228 sp001870905 | GeitlerinemaPCC 9228.faa |
 | Geitlerinema sp FC II | - | gFC.faa |
 | Baaleninema simplex PCC 7105 | Baaleninema simplex | Baaleninemasimplex.faa |
