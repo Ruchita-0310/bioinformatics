@@ -119,8 +119,8 @@ nohup sh -c 'for file in /bio/data/Ruchita/msa_clustalo1/ale_o/*.ufboot; do ALEo
 **Results**: 
 1. The command will produce .ale files
 # 9. Computing Reconciled Gene Trees for Each Candidate Rooted Species Tree
-## 9.1. ALE_undated | run it in parallel or loop
-1. ALE_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
+## 9.1. ALEml_undated | run it in parallel or loop
+1. ALEml_undated provides a quantitative measure of assembly accuracy that can help researchers assess the quality of their genome assembly and guide future research efforts. It is particularly useful when comparing genomes from different lineages where the timing of divergence is not well-known.
 2. Use the .ale files produced in the previous step to run this command
 3. Use iTOL to reroot the unrooted trees. In this case, the tree was rerooted at 3 different places. Hence 3 different names as `reroot1`, `reroot2`, and `reroot3`. (make sure to delete .faa.hmm.results)
 ```
