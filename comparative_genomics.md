@@ -224,7 +224,7 @@ nano Ancestral_reconstruction_copy_number.py # change .ml_rec to .uml_rec
 ```
 python Ancestral_reconstruction_copy_number.py 0.5 16 30
 ```
-- Copy to [modify the ancestral reconstruction](https://github.com/vmkhot/Comparative-Genomics-Verruco/blob/master/ancestral_trial/ancestral_modified_VK.py)
+- Copy [modify the ancestral reconstruction](https://github.com/vmkhot/Comparative-Genomics-Verruco/blob/master/ancestral_trial/ancestral_modified_VK.py). This code is modified version of the original code that now gives copy numbers too.
 - The modifications include duplications, transfers, losses, originations and copies. 
 ```
 python ancestral_modified.py 0.5 16 30
