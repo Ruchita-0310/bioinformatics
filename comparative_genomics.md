@@ -219,7 +219,7 @@ nano Ancestral_reconstruction_copy_number.py # change .ml_rec to .uml_rec
 - The ALE output also provides estimates of the gene families present at each node. Therefore we can model the presence and absence of gene families at internal nodes, reconstructing ancestral genomes.
 - There are three command line arguments. The first is the minimum copy number at which a gene family should be included in the reconstruction , i.e., 0.5 = on average, half a copy of the family is present at the node in question (fractions are possible because the value is averaged over the sampled reconciliations).
 - 0.5 could be a limitation
-- The secondnd third arguments are the range of the internal nodes. For example, in this dataset the internal nodes are labelled 16, 17, 18... 30 (as can be seen in the output of branchwise_number_of_events.py). Thus, the command line arguments are 16 and 30. All nodes between 16 and 30 will be reconstructed.
+- The second and third arguments are the range of the internal nodes. For example, in this dataset the internal nodes are labelled 16, 17, 18... 30 (as can be seen in the output of branchwise_number_of_events.py). Thus, the command line arguments are 16 and 30. All nodes between 16 and 30 will be reconstructed.
 - The results will give only "copies" at every node.
 ```
 python Ancestral_reconstruction_copy_number.py 0.5 16 30
